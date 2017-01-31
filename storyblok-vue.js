@@ -10,7 +10,7 @@
 
   function install(Vue) {
 
-    Vue.directive('touch', {
+    Vue.directive('editable', {
       bind: function(el, binding) {
         if (typeof binding.value._editable === 'undefined') {
           return
