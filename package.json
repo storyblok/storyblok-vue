@@ -1,0 +1,20 @@
+{
+  "name": "storyblok-vue",
+  "version": "1.0.0",
+  "description": "Storyblok directive for get editable elements.",
+  "main": "storyblok-vue.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storyblok/storyblok-vue"
+  },
+  "keywords": [
+    "vue",
+    "storyblok"
+  ],
+  "author": "Alexander Feiglstorfer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/storyblok/storyblok-vue/issues"
+  },
+  "homepage": "https://github.com/storyblok/storyblok-vue"
+}
