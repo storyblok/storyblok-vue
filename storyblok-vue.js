@@ -24,6 +24,7 @@
         addClass(el, 'storyblok__outline')
       }
     }
+
   }
 
   if (typeof exports == "object") {
