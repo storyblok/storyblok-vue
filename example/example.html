@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StoryBlok - Demo</title>
-  <link href='/css/demo.css' rel='stylesheet' type='text/css'>
+  <title>StoryBlok - Demo</title>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/css/uikit.min.css" />
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.min.js"></script>
   <script type="text/javascript" src="https://unpkg.com/storyblok-vue@1.0.2/storyblok-vue.js"></script>
@@ -50,7 +50,7 @@
           var that = this
 
           function getStory(version) {
-            storyblok.get({slug: 'vue', space: 39985, version: version}, function(data) {
+            storyblok.get({slug: 'vue', version: version}, function(data) {
               that.story = {content: {body: []}}
               that.$nextTick(function() {
                 that.story = data.story
