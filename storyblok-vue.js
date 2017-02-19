@@ -23,7 +23,7 @@
 
         addClass(el, 'storyblok__outline')
       }
-    }
+    })
 
   }
 
