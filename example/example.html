@@ -30,14 +30,14 @@
   <script type="text/javascript" src="//app.storyblok.com/f/storyblok-latest.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
-      var components = [];
+      var components = []
 
       $('[data-template]').each(function() {
         Vue.component($(this).data('template'), {
           template: $(this).html(),
           props: ['content']
-        });
-      });
+        })
+      })
 
       Vue.config.devtools = true
 
@@ -64,7 +64,7 @@
 
           // on change reload the draft version
           storyblok.on('change', function() {
-            getStory('draft');
+            getStory('draft')
           })
 
           // Call ping editor to see if 
@@ -72,15 +72,15 @@
           // if not load the published version
           storyblok.pingEditor(function() {
             if (storyblok.isInEditor()) {
-              getStory('draft');
+              getStory('draft')
             } else {
-              getStory('published');
+              getStory('published')
             }
           })
         }
       })
 
-    });
+    })
   </script>
 </body>
 </html>
