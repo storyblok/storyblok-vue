@@ -25,7 +25,7 @@
       }
     })
 
-    if (typeof window.storyblok !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.storyblok !== 'undefined') {
       Vue.prototype.$storyblok = window.storyblok
     }
   }
