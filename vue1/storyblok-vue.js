@@ -3,7 +3,7 @@
   var addClass = function(el, className) {
     if (el.classList) {
       el.classList.add(className)
-    } else if (!hasClass(el, className)) {
+    } else if (!new RegExp('\\b'+ className+'\\b').test(el.className)) {
       el.className += ' ' + className
     }
   }
