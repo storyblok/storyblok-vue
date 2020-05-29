@@ -12,7 +12,7 @@
 
     Vue.directive('editable', {
       bind: function(el, binding) {
-        if (typeof binding.value._editable === 'undefined') {
+        if (typeof binding.value._editable === 'undefined' || binding.value._editable === null) {
           return
         }
 
