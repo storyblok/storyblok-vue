@@ -10,19 +10,21 @@
 
   function install(Vue) {
 
-    Vue.directive('editable', {
-      bind: function(el, binding) {
-        if (typeof binding.value._editable === 'undefined' || binding.value._editable === null) {
-          return
-        }
-
-        var options = JSON.parse(binding.value._editable.replace('<!--#storyblok#', '').replace('-->', ''))
-
-        el.setAttribute('data-blok-c', JSON.stringify(options))
-        el.setAttribute('data-blok-uid', options.id + '-' + options.uid)
-
-        addClass(el, 'storyblok__outline')
+    Vue.directive('editable', function(el, binding) {
+      if (
+        typeof binding.value._editable === 'undefined' ||
+        binding.value._editable === null || 
+        (binding.oldValue && binding.oldValue._editable === binding.value._editable)
+      ) {
+        return
       }
+
+      var options = JSON.parse(binding.value._editable.replace('<!--#storyblok#', '').replace('-->', ''))
+
+      el.setAttribute('data-blok-c', JSON.stringify(options))
+      el.setAttribute('data-blok-uid', options.id + '-' + options.uid)
+
+      addClass(el, 'storyblok__outline')
     })
 
     if (typeof window !== 'undefined' && typeof window.storyblok !== 'undefined') {
