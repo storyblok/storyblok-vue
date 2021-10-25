@@ -6,5 +6,11 @@
     "./lib",
     "./playground-vue2",
     "./playground-vue3"
-  ]
+  ],
+  "scripts": {
+    "postinstall": "patch-package"
+  },
+  "devDependencies": {
+    "patch-package": "^6.4.7"
+  }
 }
