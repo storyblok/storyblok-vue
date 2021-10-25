@@ -19,6 +19,7 @@
     }
   },
   "scripts": {
+    "dev": "vite build --watch & vite build -m v2 --watch",
     "build": "vite build && vite build -m v2",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest __tests__",

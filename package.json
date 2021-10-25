@@ -8,6 +8,7 @@
     "./playground-vue3"
   ],
   "scripts": {
+    "demo": "npm run demo --workspace=playground-vue2 & npm run demo --workspace=playground-vue3",
     "postinstall": "patch-package"
   },
   "devDependencies": {
