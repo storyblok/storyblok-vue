@@ -1,5 +1,5 @@
 {
-  "name": "playground-vue3",
+  "name": "@storyblok/vue-playground",
   "version": "0.0.0",
   "scripts": {
     "demo": "vite"

@@ -4,14 +4,13 @@
   "version": "0.0.1",
   "workspaces": [
     "./lib",
-    "./playground-vue2",
-    "./playground-vue3"
+    "./playground"
   ],
   "scripts": {
-    "demo": "npm run demo --workspace=playground-vue2 & npm run demo --workspace=playground-vue3",
-    "postinstall": "patch-package"
-  },
-  "devDependencies": {
-    "patch-package": "^6.4.7"
+    "dev": "npm run dev --workspace=lib & npm run demo",
+    "demo": "npm run demo --workspace=playground",
+    "build": "npm run build --workspace=lib",
+    "test:unit": "npm run test:unit --workspace=lib",
+    "test:e2e": "npm run test:e2e --workspace=lib"
   }
 }

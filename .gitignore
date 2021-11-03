@@ -2,3 +2,4 @@
 node_modules
 dist
 dist-v2
+cypress/videos
