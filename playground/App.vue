@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>Vue 3</h2>
+  <div id="app">
+    <h2>Vue 2</h2>
     <div data-test="editable" v-editable="blok.content">
       Open DevTools and inspect this &lt;div&gt;. You should see a
       <i>data-blok-c</i> and <i>data-blok-uid</i> attrs.
@@ -8,11 +8,15 @@
   </div>
 </template>
 
-<script setup>
-const blok = {
-  content: {
-    _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
-  },
+<script>
+export default {
+  data: () => ({
+    blok: {
+      content: {
+        _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
+      },
+    },
+  }),
 };
 </script>
 
