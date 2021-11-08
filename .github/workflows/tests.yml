@@ -22,7 +22,7 @@ jobs:
       - name: Jest run
         run: npm run test:unit
       - name: Cypress run
-        uses: npm run test:e2e
+        run: npm run test:e2e
       # - name: Release
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
