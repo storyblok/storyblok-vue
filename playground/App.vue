@@ -3,7 +3,10 @@
     <h2>Vue 2</h2>
     <div data-test="editable" v-editable="blok.content">
       Open DevTools and inspect this &lt;div&gt;. You should see a
-      <i>data-blok-c</i> and <i>data-blok-uid</i> attrs.
+      <i>data-blok-c</i>
+      and
+      <i>data-blok-uid</i>
+      attrs.
     </div>
   </div>
 </template>
@@ -13,6 +16,7 @@ export default {
   data: () => ({
     blok: {
       content: {
+        // ...
         _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
       },
     },
