@@ -79,7 +79,7 @@ For every component you've defined in your Storyblok space, add the `v-editable`
 
 Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-Check in the [playground](/../../tree/master/playground) the full example.
+Check out the [playground](/../../tree/master/playground) for a full example.
 
 ### Compatibility
 
