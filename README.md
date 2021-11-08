@@ -79,7 +79,7 @@ For every component you've defined in your Storyblok space, add the `v-editable`
 
 Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-Check in the [playground](/../playground) the full example.
+Check in the [playground](/../../playground) the full example.
 
 ### Compatibility
 
@@ -95,7 +95,9 @@ This plugin is for Vue 2. Thus, it supports the [same browsers as Vue 2](https:/
 
 ### Support
 
-- Bugs or Feature Requests? [Submit an issue](/../issues/new);
+˝
+
+- Bugs or Feature Requests? [Submit an issue](/../../issues/new);
 - Do you have questions about Storyblok or you need help? [Join our Discord Community](https://discord.gg/jKrbAMz).
 
 ### Contributing
