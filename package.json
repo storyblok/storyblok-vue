@@ -29,7 +29,7 @@
       "prettier --write",
       "eslint"
     ],
-    "*.{md}": [
+    "*.md": [
       "prettier --write"
     ]
   },
