@@ -39,6 +39,11 @@
     "vue-jest": "^4.0.1",
     "vue-template-compiler": "^2.6.14"
   },
+  "babel": {
+    "presets": [
+      "@vue/babel-preset-app"
+    ]
+  },
   "eslintConfig": {
     "env": {
       "node": true
