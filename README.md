@@ -37,9 +37,11 @@
 
 **Note**: This plugin is for Vue 2. [Check out the @next version for Vue 3](https://github.com/storyblok/storyblok-vue/tree/next)
 
-## 🚀 Setup
+## 🚀 Usage
 
 > If you are first-time user of the Storyblok, read the [Getting Started](https://www.storyblok.com/docs/guide/getting-started?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) guide to get a project ready in less than 5 minutes.
+
+### Installation
 
 Install `@storyblok/vue`:
 
@@ -57,7 +59,7 @@ import StoryblokVue from "@storyblok/vue";
 Vue.use(StoryblokVue);
 ```
 
-### From a CDN
+#### From a CDN
 
 Install the file from the CDN:
 
@@ -67,7 +69,7 @@ Install the file from the CDN:
 
 That's it, the plugin is auto-registered for you 😉.
 
-## 👾 Usage
+### Getting Started
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
