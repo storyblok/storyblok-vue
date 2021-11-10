@@ -44,6 +44,11 @@
       "node": true
     }
   },
+  "babel": {
+    "presets": [
+      "@vue/babel-preset-app"
+    ]
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -63,7 +68,6 @@
     "vue",
     "storyblok"
   ],
-  
   "author": "Alexander Feiglstorfer",
   "license": "MIT",
   "bugs": {
