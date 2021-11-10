@@ -16,14 +16,9 @@
   <a href="https://npmjs.com/package/@storyblok/vue" rel="nofollow">
     <img src="https://img.shields.io/npm/dt/@storyblok/vue.svg?style=flat-square" alt="npm">
   </a>
-  <br />
+</p>
 
-  <!-- <a href="https://david-dm.org/storyblok/@storyblok/vue" rel="nofollow">
-    <img src="https://david-dm.org/storyblok/@storyblok/vue/status.svg?style=flat-square" alt="Dependencies" >
-  </a> -->
-  <!-- <a href="http://standardjs.com" rel="nofollow">
-    <img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square" alt="Code Style" >
-  </a> -->
+<p align="center">
   <a href="https://discord.gg/jKrbAMz">
    <img src="https://img.shields.io/discord/700316478792138842?label=Join%20Our%20Discord%20Community&style=appveyor&logo=discord&color=09b3af">
    </a>
