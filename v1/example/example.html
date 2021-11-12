@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StoryBlok - Demo</title>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/css/uikit.min.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/storyblok-vue@1.0.2/storyblok-vue.js"></script>
+</head>
+<body>
+  <div class="uk-container uk-container-center">
+    <h1 class="uk-text-center uk-margin-large-top">Demo</h1>
+    <div id="root">
+      <root :content="story.content"></root>
+    </div>
+  </div>
+
+  <script type="text/template" data-template="root">
+    <div v-editable="content">
+      <component v-for="blok in content.body" :content="blok" :is="blok.component"></component>
+    </div>
+  </script>
+  
+  <script type="text/template" data-template="headline">
+    <h1 class="uk-heading-large" v-editable="content">{{ content.text }}</h1>
+  </script>
+
+  <script type="text/javascript" src="//app.storyblok.com/f/storyblok-latest.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var components = []
+
+      $('[data-template]').each(function() {
+        Vue.component($(this).data('template'), {
+          template: $(this).html(),
+          props: ['content']
+        })
+      })
+
+      Vue.config.devtools = true
+
+      new Vue({
+        el: '#root',
+        data: {
+          story: {content: {body: []}}
+        },
+        created: function() {
+          var that = this
+
+          function getStory(version) {
+            storyblok.get({slug: 'vue', version: version}, function(data) {
+              that.story = {content: {body: []}}
+              that.$nextTick(function() {
+                that.story = data.story
+              })
+            })
+          }
+
+          storyblok.init({
+            accessToken: 'wANpEQEsMYGOwLxwXQ76Ggtt'
+          })
+
+          // on change reload the draft version
+          storyblok.on('change', function() {
+            getStory('draft')
+          })
+
+          // Call ping editor to see if 
+          // we are in the editor
+          // if not load the published version
+          storyblok.pingEditor(function() {
+            if (storyblok.isInEditor()) {
+              getStory('draft')
+            } else {
+              getStory('published')
+            }
+          })
+        }
+      })
+
+    })
+  </script>
+</body>
+</html>
