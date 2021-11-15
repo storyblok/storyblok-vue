@@ -1,7 +1,11 @@
-import { createApp } from "vue";
+import Vue from "vue";
 import StoryblokVue from "@storyblok/vue";
 import App from "./App.vue";
 
-const app = createApp(App);
-app.use(StoryblokVue);
-app.mount("#app");
+Vue.config.productionTip = false;
+
+Vue.use(StoryblokVue);
+
+new Vue({
+  render: (h) => h(App),
+}).$mount("#app");
