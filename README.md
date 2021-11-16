@@ -30,7 +30,7 @@
   </a>
 </p>
 
-**Note**: This plugin is for Vue 2. [Check out the @next version for Vue 3](https://github.com/storyblok/storyblok-vue/tree/next)
+**Note**: This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue/tree/master)
 
 ## 🚀 Usage
 
@@ -38,20 +38,22 @@
 
 ### Installation
 
-Install `@storyblok/vue`:
+Install `@storyblok/vue@next`:
 
 ```bash
-npm install --save-dev @storyblok/vue
-// yarn add -D @storyblok/vue
+npm install --save-dev @storyblok/vue@next
+// yarn add -D @storyblok/vue@next
 ```
 
 Register it globally on your application (usually in `main.js`):
 
 ```js
-import Vue from "vue";
+import { createApp } from "vue";
 import StoryblokVue from "@storyblok/vue";
+import App from "./App.vue";
 
-Vue.use(StoryblokVue);
+const app = createApp(App);
+app.use(StoryblokVue);
 ```
 
 #### From a CDN
@@ -59,12 +61,10 @@ Vue.use(StoryblokVue);
 Install the file from the CDN:
 
 ```html
-<script src="https://unpkg.com/@storyblok/vue"></script>
+<script src="https://unpkg.com/@storyblok/vue@next"></script>
 ```
 
-That's it, the plugin is auto-registered for you 😉.
-
-### Getting Started
+### Getting started
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
@@ -76,11 +76,11 @@ For every component you've defined in your Storyblok space, add the `v-editable`
 
 Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-Check out the [playground](/../../tree/master/playground) for a full example.
+Check out the [playground](/../../tree/next/playground) for a full example.
 
 ### Compatibility
 
-This plugin is for Vue 2. Thus, it supports the [same browsers as Vue 2](https://vuejs.org/v2/guide/installation.html#Compatibility-Note).
+This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). In short: all modern browsers, dropping IE support.
 
 ## 🔗 Related Links
 

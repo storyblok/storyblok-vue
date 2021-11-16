@@ -45,5 +45,11 @@
       "prettier"
     ],
     "ignorePatterns": "dist/"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ]
   }
 }
