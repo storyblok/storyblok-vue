@@ -45,15 +45,5 @@
       "prettier"
     ],
     "ignorePatterns": "dist/"
-  },
-  "release": {
-    "branches": [
-      "master",
-      {
-        "name": "next",
-        "channel": "next",
-        "prerelease": "beta"
-      }
-    ]
   }
 }

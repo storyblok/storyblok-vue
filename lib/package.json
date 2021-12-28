@@ -73,5 +73,11 @@
   "bugs": {
     "url": "https://github.com/storyblok/storyblok-vue/issues"
   },
-  "homepage": "https://github.com/storyblok/storyblok-vue"
+  "homepage": "https://github.com/storyblok/storyblok-vue",
+  "release": {
+    "branches": [
+      "master",
+      "next"
+    ]
+  }
 }
