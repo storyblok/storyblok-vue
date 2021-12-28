@@ -7,7 +7,7 @@
     Vue plugin to make any <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok</a> component editable with a simple <code>v-editable</code> directive.
   </p>
   <br />
-</div>a
+</div>
 
 <p align="center">
   <a href="https://npmjs.com/package/@storyblok/vue">
@@ -42,7 +42,7 @@ Install `@storyblok/vue@next`:
 
 ```bash
 npm install --save-dev @storyblok/vue@next
-// yarn add -D @storyblok/vue@next
+# yarn add -D @storyblok/vue@next
 ```
 
 Register it globally on your application (usually in `main.js`):

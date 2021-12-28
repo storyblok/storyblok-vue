@@ -49,7 +49,11 @@
   "release": {
     "branches": [
       "master",
-      "next"
+      {
+        "name": "next",
+        "channel": "next",
+        "prerelease": "beta"
+      }
     ]
   }
 }
