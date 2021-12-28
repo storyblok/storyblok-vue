@@ -73,5 +73,15 @@
   "bugs": {
     "url": "https://github.com/storyblok/storyblok-vue/issues"
   },
-  "homepage": "https://github.com/storyblok/storyblok-vue"
+  "homepage": "https://github.com/storyblok/storyblok-vue",
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "next",
+        "channel": "next",
+        "prerelease": "beta"
+      }
+    ]
+  }
 }
