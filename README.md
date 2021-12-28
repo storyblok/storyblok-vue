@@ -30,7 +30,7 @@
   </a>
 </p>
 
-**Note**: This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue/tree/master)
+**Note**: This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue/tree/master).
 
 ## 🚀 Usage
 
