@@ -5,7 +5,7 @@
 	<h1 align="center">@storyblok/vue</h1>
   <p align="center">
     Vue plugin to make any <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok</a> component editable with a simple <code>v-editable</code> directive.
-  </p>
+  </p> 
   <br />
 </div>
 
