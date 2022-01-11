@@ -2,13 +2,14 @@
   "name": "@storyblok/vue-playground",
   "version": "0.0.0",
   "scripts": {
-    "demo": "vite"
+    "demo": "vite",
+    "build": "vite build"
   },
   "devDependencies": {
     "@storyblok/vue": "^3.0.0",
-    "@vitejs/plugin-vue": "^1.3.0",
-    "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.4.4",
-    "vue": "^3.0.5"
+    "@vitejs/plugin-vue": "^2.0.1",
+    "axios": "^0.24.0",
+    "vite": "^2.7.10",
+    "vue": "^3.2.13"
   }
 }
