@@ -8,6 +8,11 @@
       <i>data-blok-uid</i>
       attrs.
     </div>
+
+    <h3>
+      <code>storyblokApi.get:</code>
+      <span data-test="api">{{ apiExists }}</span>
+    </h3>
   </div>
 </template>
 
@@ -22,7 +27,7 @@ const blok = {
 };
 
 const storyblokApi = inject("storyblokApi");
-console.log(storyblokApi);
+const apiExists = !!(storyblokApi && typeof storyblokApi.get === "function");
 
 onMounted(() => useStoryblokBridge(12345, () => console.log("hola")));
 </script>
