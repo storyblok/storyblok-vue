@@ -4,7 +4,7 @@
 	</a>
 	<h1 align="center">@storyblok/vue</h1>
   <p align="center">
-    Vue plugin to make any <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok</a> component editable with a simple <code>v-editable</code> directive.
+    The Vue plugin you need to interact with <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok API</a> and enable the Real-time Visual Editing Experience. 
   </p>
   <br />
 </div>
@@ -38,23 +38,31 @@
 
 ### Installation
 
-Install `@storyblok/vue@next`:
+Install `@storyblok/vue@next`, along with `axios` (if you want to use our [api client](https://github.com/storyblok/storyblok-js-client)):
 
 ```bash
-npm install --save-dev @storyblok/vue@next
-# yarn add -D @storyblok/vue@next
+npm install --save-dev @storyblok/vue@next axios
+# yarn add -D @storyblok/vue@next axios
 ```
 
-Register it globally on your application (usually in `main.js`):
+Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
 
 ```js
 import { createApp } from "vue";
-import StoryblokVue from "@storyblok/vue";
+import { StoryblokVue, apiPlugin } from "@storyblok/vue";
 import App from "./App.vue";
 
 const app = createApp(App);
-app.use(StoryblokVue);
+
+app.use(StoryblokVue. {
+  accessToken: "YOUR_ACCESS_TOKEN",
+  use: [apiPlugin]
+});
 ```
+
+That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
+
+> You can enable/disable some of these features if you don't need them, so you save some KB.
 
 #### From a CDN
 
@@ -65,6 +73,74 @@ Install the file from the CDN:
 ```
 
 ### Getting started
+
+`@storyblok/vue` does three actions when you initialize it:
+
+- Provides a `storyblokApi` object in your app, which is an instance of [storyblok-js-client](https://github.com/storyblok/storyblok-js-client)
+- Loads [Storyblok Bridge](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) for real-time visual updates
+- Provides a `v-editable` directive to link editable components to the Storyblok Visual Editor
+
+#### 1. Fetching Content
+
+Inject `storyblokApi` when using Composition API:
+
+```html
+<template>
+  <div>
+    <p v-for="story in stories" :key="story.id">{{ story.name }}</p>
+  </div>
+</template>
+
+<script setup>
+  import { inject } from "vue";
+
+  const storyblokApi = inject("storyblokApi");
+  const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
+</script>
+```
+
+or use `this.$storyblokApi` with Options API:
+
+```js
+export default {
+  async created() {
+    const { data } = await this.$storyblokApi.get("cdn/stories", {
+      version: "draft",
+    });
+  },
+};
+```
+
+> Note: if you don't use `apiPlugin`, you can use your prefered method or function to fetch your data.
+
+#### 2. Listen to Storyblok Visual Editor events
+
+Use `useStoryBridge` to get the new story every time is triggered a `change` event from the Visual Editor. You need to pass the story id as first param, and a callback function as second param to update the new story:
+
+```html
+<script setup>
+  import { onMounted, inject } from "vue";
+  import { useStoryblokBridge } from "@storyblok/vue";
+
+  const storyblokApi = inject("storyblokApi");
+  const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
+  const state = reactive({ story: data.story });
+
+  onMounted(() => {
+    useStoryblokBridge(state.story.id, story => (state.story = story));
+  });
+</script>
+```
+
+You can pass [Bridge options](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) as a third parameter as well:
+
+```js
+useStoryblokBridge(state.story.id, (story) => (state.story = story), {
+  resolveRelations: ["Article.author"],
+});
+```
+
+### 3. Link your components to Storyblok Visual Editor
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
@@ -77,6 +153,51 @@ For every component you've defined in your Storyblok space, add the `v-editable`
 Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
 Check out the [playground](/../../tree/next/playground) for a full example.
+
+### Features and API
+
+You can **choose the features to use** when you initialize the plugin. In that way, you can improve Web Performance by optimizing your page load and save some bytes.
+
+#### Storyblok API
+
+You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok):
+
+```js
+app.use(StoryblokVue, {
+  accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt",
+  apiOptions: {
+    // storyblok-js-client config object
+    cache: { type: "memory" },
+  },
+  use: [apiPlugin],
+});
+```
+
+If you prefer to use your own fetch method, just remove the `apiPlugin` and `storyblok-js-client` won't be added to your application.
+
+```js
+app.use(StoryblokVue);
+```
+
+#### Storyblok Bridge
+
+You can conditionally load it by using the `bridge` option. Very useful if you want to disable it in production:
+
+```js
+app.use(StoryblokVue, {
+  bridge: process.env.NODE_ENV !== "development",
+});
+```
+
+If you don't use `useStoryblokBridge`, you have still access to the raw `window.StoryblokBridge`:
+
+```js
+const sbBridge = new window.StoryblokBridge(options);
+
+sbBridge.on(["input", "published", "change"], (event) => {
+  // ...
+});
+```
 
 ### Compatibility
 
