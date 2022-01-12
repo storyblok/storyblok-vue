@@ -5,10 +5,9 @@ import { StoryblokVue, apiPlugin } from "@storyblok/vue";
 const app = createApp(App);
 
 app.use(StoryblokVue, {
-  options: {
-    api: { accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt" },
-    bridge: false,
-  },
+  accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt",
+  // bridge: false,
+  // apiOptions: {  },
   use: [apiPlugin], // use it only if you need it
 });
 
