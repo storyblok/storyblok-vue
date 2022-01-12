@@ -62,7 +62,7 @@ app.use(StoryblokVue. {
 
 That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-> You can enable/disable some of these features if you don't need them, so you save some KB.
+> You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section
 
 #### From a CDN
 
@@ -140,7 +140,7 @@ useStoryblokBridge(state.story.id, (story) => (state.story = story), {
 });
 ```
 
-### 3. Link your components to Storyblok Visual Editor
+#### 3. Link your components to Storyblok Visual Editor
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
