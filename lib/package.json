@@ -73,7 +73,6 @@
     "storyblok"
   ],
   "author": "Alexander Feiglstorfer",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/storyblok/storyblok-vue/issues"
   },
