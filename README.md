@@ -72,6 +72,8 @@ Install the file from the CDN:
 <script src="https://unpkg.com/@storyblok/vue@next"></script>
 ```
 
+You'll be able to access the same methods in `window.storyblokVue`.
+
 ### Getting started
 
 `@storyblok/vue` does three actions when you initialize it:
@@ -97,18 +99,6 @@ Inject `storyblokApi` when using Composition API:
   const storyblokApi = inject("storyblokApi");
   const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
 </script>
-```
-
-or use `this.$storyblokApi` with Options API:
-
-```js
-export default {
-  async created() {
-    const { data } = await this.$storyblokApi.get("cdn/stories", {
-      version: "draft",
-    });
-  },
-};
 ```
 
 > Note: if you don't use `apiPlugin`, you can use your prefered method or function to fetch your data.

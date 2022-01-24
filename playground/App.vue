@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import { onMounted, inject } from "vue";
-import { useStoryblokBridge } from "@storyblok/vue";
+import { onMounted } from "vue";
+import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
 const blok = {
   content: {
@@ -26,7 +26,7 @@ const blok = {
   },
 };
 
-const storyblokApi = inject("storyblokApi");
+const storyblokApi = useStoryblokApi();
 const apiExists = !!(storyblokApi && typeof storyblokApi.get === "function");
 
 onMounted(() => useStoryblokBridge(12345, () => console.log("hola")));
