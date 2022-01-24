@@ -54,9 +54,9 @@ import App from "./App.vue";
 
 const app = createApp(App);
 
-app.use(StoryblokVue. {
+app.use(StoryblokVue, {
   accessToken: "YOUR_ACCESS_TOKEN",
-  use: [apiPlugin]
+  use: [apiPlugin],
 });
 ```
 
@@ -66,13 +66,11 @@ That's it! All the features are enabled for you: the _Api Client_ for interactin
 
 #### From a CDN
 
-Install the file from the CDN:
+Install the file from the CDN and access the methods via `window.storyblokVue`:
 
 ```html
 <script src="https://unpkg.com/@storyblok/vue@next"></script>
 ```
-
-You'll be able to access the same methods in `window.storyblokVue`.
 
 ### Getting started
 
@@ -94,14 +92,14 @@ Inject `storyblokApi` when using Composition API:
 </template>
 
 <script setup>
-  import { inject } from "vue";
+  import { useStoryblokApi } from "@storyblok/vue";
 
-  const storyblokApi = inject("storyblokApi");
+  const storyblokApi = useStoryblokApi();
   const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
 </script>
 ```
 
-> Note: if you don't use `apiPlugin`, you can use your prefered method or function to fetch your data.
+> Note: you can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
 
 #### 2. Listen to Storyblok Visual Editor events
 
@@ -109,10 +107,10 @@ Use `useStoryBridge` to get the new story every time is triggered a `change` eve
 
 ```html
 <script setup>
-  import { onMounted, inject } from "vue";
-  import { useStoryblokBridge } from "@storyblok/vue";
+  import { onMounted } from "vue";
+  import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
-  const storyblokApi = inject("storyblokApi");
+  const storyblokApi = useStoryblokApi();
   const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
   const state = reactive({ story: data.story });
 
