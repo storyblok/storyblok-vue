@@ -4,7 +4,7 @@
 	</a>
 	<h1 align="center">@storyblok/vue</h1>
   <p align="center">
-    The Vue plugin you need to interact with <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok API</a> and enable the <a href="https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Real-time Visual Editing Experience</a>. 
+    Vue plugin to make any <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok</a> component editable with a simple <code>v-editable</code> directive.
   </p>
   <br />
 </div>
