@@ -1,6 +1,6 @@
 {
   "name": "@storyblok/vue",
-  "version": "2.0.0",
+  "version": "5.0.0",
   "description": "Storyblok directive for get editable elements.",
   "main": "./dist/storyblok-vue.js",
   "module": "./dist/storyblok-vue.mjs",
