@@ -218,7 +218,7 @@ app.use(StoryblokVue, {
 });
 ```
 
-If you don't use `useStoryblokBridge`, you have still access to the raw `window.StoryblokBridge`:
+Keep in mind you have still access to the raw `window.StoryblokBridge`:
 
 ```js
 const sbBridge = new window.StoryblokBridge(options);
