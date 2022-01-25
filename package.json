@@ -4,11 +4,13 @@
   "version": "0.0.1",
   "workspaces": [
     "./lib",
-    "./playground"
+    "./playground",
+    "./playground-vca"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=lib & npm run demo",
     "demo": "npm run demo --workspace=playground",
+    "demo-vca": "npm run demo --workspace=playground-vca",
     "build": "npm run build --workspace=lib",
     "test:unit": "npm run test:unit --workspace=lib",
     "test:e2e": "npm run test:e2e --workspace=lib",
@@ -17,12 +19,14 @@
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@vue/composition-api": "^1.4.4",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "unplugin-vue2-script-setup": "^0.9.1"
   },
   "lint-staged": {
     "*.{vue,js,css}": [
@@ -45,5 +49,11 @@
       "prettier"
     ],
     "ignorePatterns": "dist/"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": false
   }
 }
