@@ -195,7 +195,7 @@ You can use an `apiOptions` object. This is passed down to the (storyblok-js-cli
 app.use(StoryblokVue, {
   accessToken: "<your-token>",
   apiOptions: {
-    // storyblok-js-client config object
+    //storyblok-js-client config object
     cache: { type: "memory" },
   },
   use: [apiPlugin],
