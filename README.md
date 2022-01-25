@@ -38,11 +38,11 @@
 
 ### Installation
 
-Install `@storyblok/vue@next`, along with `axios` (if you want to use our [api client](https://github.com/storyblok/storyblok-js-client)):
+Install `@storyblok/vue@next`
 
 ```bash
-npm install --save-dev @storyblok/vue@next axios
-# yarn add -D @storyblok/vue@next axios
+npm install --save-dev @storyblok/vue@next
+# yarn add -D @storyblok/vue@next
 ```
 
 Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
@@ -177,7 +177,7 @@ app.use(StoryblokVue, {
 });
 ```
 
-If you don't use `useStoryblokBridge`, you have still access to the raw `window.StoryblokBridge`:
+In case you need it, you have still access to the raw `window.StoryblokBridge`:
 
 ```js
 const sbBridge = new window.StoryblokBridge(options);
