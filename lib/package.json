@@ -2,15 +2,15 @@
   "name": "@storyblok/vue",
   "version": "2.0.0",
   "description": "Storyblok directive for get editable elements.",
-  "main": "./dist/storyblok-vue.js",
-  "module": "./dist/storyblok-vue.mjs",
+  "main": "./dist/storyblok-vue.umd.js",
+  "module": "./dist/storyblok-vue.es.js",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/storyblok-vue.mjs",
-      "require": "./dist/storyblok-vue.js"
+      "import": "./dist/storyblok-vue.es.js",
+      "require": "./dist/storyblok-vue.umd.js"
     }
   },
   "scripts": {
@@ -22,18 +22,15 @@
     "test:e2e-watch": "cypress open-ct",
     "prepublishOnly": "npm run build && cp ../README.md ./"
   },
-  "dependencies": {
-    "@storyblok/js": "^1.0.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
-    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vite-dev-server": "^2.0.7",
     "@cypress/vue": "^2.2.3",
     "@vitejs/plugin-vue": "^1.3.0",
     "@vue/babel-preset-app": "^4.5.13",
     "@vue/test-utils": "^1.2.2",
     "babel-jest": "^26.6.3",
-    "cypress": "^9.3.1",
+    "cypress": "^8.3.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jest": "^25.2.4",
     "jest": "^26.6.3",
@@ -72,6 +69,7 @@
     "storyblok"
   ],
   "author": "Alexander Feiglstorfer",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/storyblok/storyblok-vue/issues"
   },
@@ -79,10 +77,11 @@
   "release": {
     "branches": [
       "master",
-      "next"
+      {
+        "name": "next",
+        "channel": "next",
+        "prerelease": "beta"
+      }
     ]
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

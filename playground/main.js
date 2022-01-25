@@ -1,13 +1,10 @@
 import Vue from "vue";
-import { StoryblokVue, apiPlugin } from "@storyblok/vue";
+import StoryblokVue from "@storyblok/vue";
 import App from "./App.vue";
 
-Vue.use(StoryblokVue, {
-  accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt",
-  // bridge: false,
-  // apiOptions: {  },
-  use: [apiPlugin], // use it only if you need it
-});
+Vue.config.productionTip = false;
+
+Vue.use(StoryblokVue);
 
 new Vue({
   render: (h) => h(App),
