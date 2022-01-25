@@ -152,7 +152,7 @@ You can use an `apiOptions` object. This is passed down to the (storyblok-js-cli
 
 ```js
 app.use(StoryblokVue, {
-  accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt",
+  accessToken: "<your-token>",
   apiOptions: {
     // storyblok-js-client config object
     cache: { type: "memory" },
@@ -173,7 +173,7 @@ You can conditionally load it by using the `bridge` option. Very useful if you w
 
 ```js
 app.use(StoryblokVue, {
-  bridge: process.env.NODE_ENV !== "development",
+  bridge: process.env.NODE_ENV !== "production",
 });
 ```
 
