@@ -5,8 +5,7 @@
   "main": "./dist/storyblok-vue.js",
   "module": "./dist/storyblok-vue.mjs",
   "files": [
-    "dist",
-    "composables"
+    "dist"
   ],
   "exports": {
     ".": {
@@ -24,7 +23,7 @@
     "prepublishOnly": "npm run build && cp ../README.md ./"
   },
   "dependencies": {
-    "@storyblok/js": "^1.0.0"
+    "@storyblok/js": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
