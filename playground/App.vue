@@ -16,23 +16,20 @@
   </div>
 </template>
 
-<script>
-import { useStoryblokBridge } from "@storyblok/vue";
+<script setup>
+import { onMounted } from "vue";
+import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
-export default {
-  data: () => ({
-    apiExists: false,
-    blok: {
-      content: {
-        _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
-      },
-    },
-  }),
-  mounted() {
-    this.apiExists = !!this.$storyblokApi;
-    useStoryblokBridge(12345, () => console.log("hola"));
+const blok = {
+  content: {
+    _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
   },
 };
+
+const storyblokApi = useStoryblokApi();
+const apiExists = !!(storyblokApi && typeof storyblokApi.get === "function");
+
+onMounted(() => useStoryblokBridge(12345, () => console.log("hola")));
 </script>
 
 <style>

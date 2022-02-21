@@ -1,14 +1,14 @@
-import Vue from "vue";
-import { StoryblokVue, apiPlugin } from "@storyblok/vue";
+import { createApp } from "vue";
 import App from "./App.vue";
+import { StoryblokVue, apiPlugin } from "@storyblok/vue";
 
-Vue.use(StoryblokVue, {
+const app = createApp(App);
+
+app.use(StoryblokVue, {
   accessToken: "wANpEQEsMYGOwLxwXQ76Ggtt",
   // bridge: false,
   // apiOptions: {  },
   use: [apiPlugin], // use it only if you need it
 });
 
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app");
+app.mount("#app");

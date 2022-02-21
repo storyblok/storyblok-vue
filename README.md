@@ -30,7 +30,7 @@
   </a>
 </p>
 
-**Note**: This plugin is for Vue 2. [Check out the docs for Vue 3 version](https://github.com/storyblok/storyblok-vue/tree/next).
+**Note**: This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
 
 ## 🚀 Usage
 
@@ -38,58 +38,38 @@
 
 ### Installation
 
-Install `@storyblok/vue`
+Install `@storyblok/vue@next`
 
 ```bash
-npm install --save-dev @storyblok/vue
-# yarn add -D @storyblok/vue
+npm install --save-dev @storyblok/vue@next
+# yarn add -D @storyblok/vue@next
 ```
 
 Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
 
 ```js
-import Vue from "vue";
+import { createApp } from "vue";
 import { StoryblokVue, apiPlugin } from "@storyblok/vue";
 import App from "./App.vue";
 
-Vue.use(StoryblokVue, {
-  accessToken: "<your-token>",
+const app = createApp(App);
+
+app.use(StoryblokVue, {
+  accessToken: "YOUR_ACCESS_TOKEN",
   use: [apiPlugin],
 });
 ```
 
 That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-> You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section
-
-#### Composition API
-
-Install [@vue/composition-api](https://github.com/vuejs/composition-api) and register it in the application:
-
-```js
-// main.js
-import VueCompositionAPI from "@vue/composition-api";
-Vue.use(VueCompositionAPI);
-```
-
-To use **script setup**, install [unplugin-vue2-script-setup](https://github.com/antfu/unplugin-vue2-script-setup). Depending on your setup, the configuration is different. For example, in Vite:
-
-```js
-// vite.config.js
-import { createVuePlugin } from "vite-plugin-vue2";
-import ScriptSetup from "unplugin-vue2-script-setup/vite";
-
-export default {
-  plugins: [createVuePlugin(), ScriptSetup()],
-};
-```
+> You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section.
 
 #### From a CDN
 
 Install the file from the CDN and access the methods via `window.storyblokVue`:
 
 ```html
-<script src="https://unpkg.com/@storyblok/vue"></script>
+<script src="https://unpkg.com/@storyblok/vue@next"></script>
 ```
 
 ### Getting started
@@ -160,28 +140,7 @@ For every component you've defined in your Storyblok space, add the `v-editable`
 
 Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
-Check out the [playground](/../../tree/master/playground-vca) for a full example.
-
-### Options API
-
-You can use Options API as well, accessing the api client via `this.$storyblokApi`:
-
-```js
-import { useStoryblokBridge } from "@storyblok/vue";
-
-export default {
-  data: () => ({
-    story: [],
-  }),
-  async created() {
-    const { data } = this.$storyblokApi.get(/* ... */);
-    this.story = data.story;
-  },
-  mounted() {
-    useStoryblokBridge(this.story.id, (evStory) => (this.story = evStory));
-  },
-};
-```
+Check out the [playground](/../../tree/next/playground) for a full example.
 
 ### Features and API
 
@@ -195,7 +154,7 @@ You can use an `apiOptions` object. This is passed down to the (storyblok-js-cli
 app.use(StoryblokVue, {
   accessToken: "<your-token>",
   apiOptions: {
-    //storyblok-js-client config object
+    // storyblok-js-client config object
     cache: { type: "memory" },
   },
   use: [apiPlugin],
@@ -218,7 +177,7 @@ app.use(StoryblokVue, {
 });
 ```
 
-Keep in mind you have still access to the raw `window.StoryblokBridge`:
+In case you need it, you have still access to the raw `window.StoryblokBridge`:
 
 ```js
 const sbBridge = new window.StoryblokBridge(options);
