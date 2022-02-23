@@ -1,18 +1,6 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
-
-const storyblokApi = useStoryblokApi();
-const { data } = await storyblokApi.get("cdn/stories/vue", {
-  version: "draft",
-});
-
-const story = ref(null);
-story.value = data.story;
-
-onMounted(() => {
-  useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
-});
+import { useStoryblok } from "@storyblok/vue";
+const story = await useStoryblok("vue", { version: "draft" });
 </script>
 
 <template>
