@@ -38,11 +38,11 @@
 
 ### Installation
 
-Install `@storyblok/vue@next`
+Install `@storyblok/vue`
 
 ```bash
-npm install --save-dev @storyblok/vue@next
-# yarn add -D @storyblok/vue@next
+npm install --save-dev @storyblok/vue
+# yarn add -D @storyblok/vue
 ```
 
 Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
@@ -69,7 +69,7 @@ That's it! All the features are enabled for you: the _Api Client_ for interactin
 Install the file from the CDN and access the methods via `window.storyblokVue`:
 
 ```html
-<script src="https://unpkg.com/@storyblok/vue@next"></script>
+<script src="https://unpkg.com/@storyblok/vue"></script>
 ```
 
 ### Getting started
@@ -80,7 +80,39 @@ Install the file from the CDN and access the methods via `window.storyblokVue`:
 - Loads [Storyblok Bridge](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) for real-time visual updates
 - Provides a `v-editable` directive to link editable components to the Storyblok Visual Editor
 
-#### 1. Fetching Content
+#### Short Form
+
+Load globally the Vue components you want to link to Storyblok in your _main.js_ file:
+
+```js
+import Page from "./components/Page.vue";
+import Teaser from "./components/Teaser.vue";
+
+app.use(StoryblokVue, {
+  accessToken: "<your-token>",
+  use: [apiPlugin],
+});
+
+app.component("Page", Page);
+app.component("Teaser", Teaser);
+```
+
+Use `useStoryblok` in your pages to fetch Storyblok stories and listen to real-time updates, as well as `StoryblokComponent` to render any component you've loaded before, like in this example:
+
+```html
+<script setup>
+  import { useStoryblok } from "@storyblok/vue";
+  const story = await useStoryblok("path-to-story", { version: "draft" });
+</script>
+
+<template>
+  <StoryblokComponent v-if="story" :blok="story.content" />
+</template>
+```
+
+#### Long Form
+
+##### 1. Fetching Content
 
 Inject `storyblokApi` when using Composition API:
 
@@ -95,13 +127,13 @@ Inject `storyblokApi` when using Composition API:
   import { useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
+  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
 </script>
 ```
 
 > Note: you can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
 
-#### 2. Listen to Storyblok Visual Editor events
+##### 2. Listen to Storyblok Visual Editor events
 
 Use `useStoryBridge` to get the new story every time is triggered a `change` event from the Visual Editor. You need to pass the story id as first param, and a callback function as second param to update the new story:
 
@@ -111,7 +143,7 @@ Use `useStoryBridge` to get the new story every time is triggered a `change` eve
   import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories", { version: "draft" });
+  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
   const state = reactive({ story: data.story });
 
   onMounted(() => {
@@ -128,7 +160,7 @@ useStoryblokBridge(state.story.id, (story) => (state.story = story), {
 });
 ```
 
-#### 3. Link your components to Storyblok Visual Editor
+##### 3. Link your components to Storyblok Visual Editor
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
@@ -145,6 +177,34 @@ Check out the [playground](/../../tree/next/playground) for a full example.
 ### Features and API
 
 You can **choose the features to use** when you initialize the plugin. In that way, you can improve Web Performance by optimizing your page load and save some bytes.
+
+#### useStoryblok(pathToStory, apiOptions = {}, bridgeOptions = {})
+
+This example of `useStoryblok`:
+
+```html
+<script setup>
+  import { useStoryblok } from "@storyblok/vue";
+  const story = await useStoryblok("home", { version: "draft" });
+</script>
+```
+
+Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`:
+
+```html
+<script setup>
+  import { onMounted } from "vue";
+  import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
+
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
+  const state = reactive({ story: data.story });
+
+  onMounted(() => {
+    useStoryblokBridge(state.story.id, story => (state.story = story));
+  });
+</script>
+```
 
 #### Storyblok API
 
