@@ -18,9 +18,9 @@
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
-    "eslint": "^8.2.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-vue": "^8.0.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-vue": "^8.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
@@ -40,12 +40,23 @@
     ]
   },
   "eslintConfig": {
+    "env": {
+      "node": true,
+      "vue/setup-compiler-macros": true
+    },
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
     "extends": [
       "eslint:recommended",
       "plugin:vue/vue3-recommended",
       "prettier"
     ],
-    "ignorePatterns": "dist/"
+    "ignorePatterns": "dist/",
+    "rules": {
+      "vue/multi-word-component-names": 0
+    }
   },
   "prettier": {
     "trailingComma": "es5",
