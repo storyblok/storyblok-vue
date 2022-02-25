@@ -34,6 +34,8 @@
 
 ## 🚀 Usage
 
+Check out the **[Live Demo](https://stackblitz.com/edit/vue-sdk-demo?file=src/main.js&terminal=dev)** on Stackblitz!
+
 > If you are first-time user of the Storyblok, read the [Getting Started](https://www.storyblok.com/docs/guide/getting-started?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) guide to get a project ready in less than 5 minutes.
 
 ### Installation
