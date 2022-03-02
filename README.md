@@ -4,7 +4,7 @@
 	</a>
 	<h1 align="center">@storyblok/vue</h1>
   <p align="center">
-    The Vue plugin you need to interact with <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok API</a> and enable the <a href="https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Real-time Visual Editing Experience</a>. 
+    The Vue SDK you need to interact with <a href="http://www.storyblok.com?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Storyblok API</a> and enable the <a href="https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue" target="_blank">Real-time Visual Editing Experience</a>. 
   </p>
   <br />
 </div>
@@ -43,8 +43,8 @@ Check out the **[Live Demo](https://stackblitz.com/edit/vue-sdk-demo?file=src/ma
 Install `@storyblok/vue`
 
 ```bash
-npm install --save-dev @storyblok/vue
-# yarn add -D @storyblok/vue
+npm install @storyblok/vue
+# yarn add @storyblok/vue
 ```
 
 Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
