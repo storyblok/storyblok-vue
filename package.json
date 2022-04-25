@@ -20,7 +20,7 @@
     "@commitlint/config-conventional": "^16.2.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-vue": "^8.6.0",
+    "eslint-plugin-vue": "^8.7.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.0",
     "prettier": "^2.6.2"
