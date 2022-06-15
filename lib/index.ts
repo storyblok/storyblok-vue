@@ -1,11 +1,20 @@
 import { ref, onMounted } from "vue";
+import type { Ref, Plugin, Directive } from "vue"
+
 import {
   storyblokEditable,
   storyblokInit,
   useStoryblokBridge,
 } from "@storyblok/js";
 
-const vEditableDirective = {
+import type {
+  StoryblokClient,
+  SbSDKOptions,
+  StoryblokBridgeConfigV2,
+  StoryData,
+} from "./types";
+
+const vEditableDirective: Directive<HTMLElement>= {
   beforeMount(el, binding) {
     if (binding.value) {
       const options = storyblokEditable(binding.value);
@@ -21,8 +30,8 @@ const printError = (fnName) => {
     `);
 };
 
-let storyblokApiInstance = null;
-export const useStoryblokApi = () => {
+let storyblokApiInstance: StoryblokClient = null;
+export const useStoryblokApi = (): StoryblokClient => {
   if (!storyblokApiInstance) printError("useStoryblokApi");
   return storyblokApiInstance;
 };
@@ -32,11 +41,11 @@ import StoryblokComponent from "./StoryblokComponent.vue";
 export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
 export const useStoryblok = async (
-  url,
-  apiOptions = {},
-  bridgeOptions = {}
+  url: URL,
+  apiOptions: SbSDKOptions = {},
+  bridgeOptions: StoryblokBridgeConfigV2 = {}
 ) => {
-  const story = ref(null);
+  const story: Ref<StoryData> = ref(null);
 
   onMounted(() => {
     if (story.value && story.value.id) {
@@ -60,8 +69,8 @@ export const useStoryblok = async (
 };
 
 // Plugin
-export const StoryblokVue = {
-  install(app, pluginOptions = {}) {
+export const StoryblokVue: Plugin = {
+  install(app, pluginOptions: SbSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
 
@@ -69,3 +78,6 @@ export const StoryblokVue = {
     storyblokApiInstance = storyblokApi;
   },
 };
+
+
+export * from './types'

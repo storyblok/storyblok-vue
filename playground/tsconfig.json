@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "isolatedModules": true,
+    "target": "ESNext",
+    "strict": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true
+  },
+  //"extends": "",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Vue",
+  "include": ["./*.vue", "./**/*.ts"],
+  "exclude": ["node_modules/*"]
+} 
