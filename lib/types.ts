@@ -1,3 +1,11 @@
+import type StoryblokComponent from "./StoryblokComponent.vue";
+
+declare module "@vue/runtime-core" {
+  export interface GlobalComponents {
+    StoryblokComponent: typeof StoryblokComponent;
+  }
+}
+
 export type {
   AlternateObject,
   Richtext,
@@ -20,4 +28,4 @@ export type {
   StoryblokResult,
   apiPlugin,
   useStoryblokBridge,
-} from "@storyblok/js"; 
+} from "@storyblok/js";

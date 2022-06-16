@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import type { SbBlokData } from "./types";
+
 export interface SbComponentProps {
   blok: SbBlokData;
 }

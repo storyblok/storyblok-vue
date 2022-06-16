@@ -16,8 +16,7 @@
   },
   "scripts": {
     "dev": "vite build --watch",
-    "//build": "vite build && tsc --project tsconfig.json",
-    "build": "vite build",
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest __tests__",
     "test:e2e": "cypress run-ct",
@@ -42,9 +41,9 @@
     "jest": "^28.1.0",
     "typescript": "^4.7.3",
     "vite": "^2.9.9",
-    "vite-plugin-dts": "^1.2.0",
     "vue": "^3.2.33",
-    "vue-jest": "next"
+    "vue-jest": "next",
+    "vue-tsc": "^0.37.9"
   },
   "babel": {
     "presets": [

@@ -1,5 +1,5 @@
 import { ref, onMounted } from "vue";
-import type { Ref, Plugin, Directive } from "vue"
+import type { Ref, Plugin, Directive } from "vue";
 
 import {
   storyblokEditable,
@@ -12,9 +12,10 @@ import type {
   SbSDKOptions,
   StoryblokBridgeConfigV2,
   StoryData,
+  StoriesParams,
 } from "./types";
 
-const vEditableDirective: Directive<HTMLElement>= {
+const vEditableDirective: Directive<HTMLElement> = {
   beforeMount(el, binding) {
     if (binding.value) {
       const options = storyblokEditable(binding.value);
@@ -41,8 +42,8 @@ import StoryblokComponent from "./StoryblokComponent.vue";
 export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
 export const useStoryblok = async (
-  url: URL,
-  apiOptions: SbSDKOptions = {},
+  url: string,
+  apiOptions: StoriesParams = {},
   bridgeOptions: StoryblokBridgeConfigV2 = {}
 ) => {
   const story: Ref<StoryData> = ref(null);
@@ -79,5 +80,4 @@ export const StoryblokVue: Plugin = {
   },
 };
 
-
-export * from './types'
+export * from "./types";
