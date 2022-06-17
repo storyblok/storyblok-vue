@@ -22,6 +22,7 @@ export type {
   StoryblokBridgeV2,
   StoryblokCache,
   StoryblokCacheProvider,
+  StoryblokComponentType,
   StoryblokClient,
   StoryblokConfig,
   StoryblokManagmentApiResult,
