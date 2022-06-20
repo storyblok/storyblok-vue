@@ -30,7 +30,7 @@
     "prettier": "^2.6.2"
   },
   "lint-staged": {
-    "*.{vue,js,css}": [
+    "*.{vue,js,css,ts}": [
       "prettier --write",
       "eslint"
     ],
