@@ -112,6 +112,22 @@ Use `useStoryblok` in your pages to fetch Storyblok stories and listen to real-t
 </template>
 ```
 
+#### Rendering Rich Text
+
+You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
+
+```html
+<template>
+  <div v-html="articleContent"></div>
+</template>
+
+<script setup>
+  import { renderRichText } from "@storyblok/vue";
+
+  const articleContent = computed(() => renderRichText(blok.articleContent));
+</script>
+```
+
 #### Long Form
 
 ##### 1. Fetching Content
