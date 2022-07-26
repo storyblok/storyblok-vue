@@ -122,6 +122,7 @@ You can easily render rich text by using the `renderRichText` function that come
 </template>
 
 <script setup>
+  import { computed } from "vue";
   import { renderRichText } from "@storyblok/vue";
 
   const articleContent = computed(() => renderRichText(blok.articleContent));
