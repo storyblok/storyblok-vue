@@ -24,23 +24,23 @@
     "prepublishOnly": "npm run build && cp ../README.md ./"
   },
   "dependencies": {
-    "@storyblok/js": "^1.7.0"
+    "@storyblok/js": "^1.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.5",
+    "@babel/core": "^7.18.10",
     "@cypress/vite-dev-server": "^2.0.7",
     "@cypress/vue": "^3.1.2",
-    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue": "^3.0.1",
     "@vue/babel-preset-app": "^5.0.4",
     "@vue/test-utils": "next",
     "@vue/tsconfig": "^0.1.3",
     "babel-jest": "^26.0.0",
     "cypress": "^9.6.0",
     "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest": "^26.8.2",
     "jest": "^28.1.3",
     "typescript": "^4.7.3",
-    "vite": "^2.9.9",
+    "vite": "^3.0.5",
     "vue": "^3.2.33",
     "vue-jest": "next",
     "vue-tsc": "^0.40.1"
