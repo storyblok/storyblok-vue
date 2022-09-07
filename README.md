@@ -129,6 +129,52 @@ You can easily render rich text by using the `renderRichText` function that come
 </script>
 ```
 
+You can set a **custom Schema and component resolver globally** at init time by using the `richText` init option:
+
+```js
+import { RichTextSchema, StoryblokVue } from "@storyblok/vue";
+import cloneDeep from "clone-deep";
+
+const mySchema = cloneDeep(RichTextSchema); // you can make a copy of the default RichTextSchema
+// ... and edit the nodes and marks, or add your own.
+// Check the base RichTextSchema source here https://github.com/storyblok/storyblok-js-client/blob/master/source/schema.js
+
+app.use(StoryblokVue, {
+  accessToken: "YOUR_ACCESS_TOKEN",
+  use: [apiPlugin],
+  richText: {
+    schema: mySchema,
+    resolver: (component, blok) => {
+      switch (component) {
+        case "my-custom-component":
+          return `<div class="my-component-class">${blok.text}</div>`;
+        default:
+          return "Resolver not defined";
+      }
+    },
+  },
+});
+```
+
+You can also set a **custom Schema and component resolver only once** by passing the options as the second parameter to `renderRichText` function:
+
+```js
+import { renderRichText } from "@storyblok/vue";
+
+renderRichText(blok.richTextField, {
+  schema: mySchema,
+  resolver: (component, blok) => {
+    switch (component) {
+      case "my-custom-component":
+        return `<div class="my-component-class">${blok.text}</div>`;
+        break;
+      default:
+        return `Component ${component} not found`;
+    }
+  },
+});
+```
+
 #### Long Form
 
 ##### 1. Fetching Content

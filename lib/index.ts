@@ -37,7 +37,12 @@ export const useStoryblokApi = (): StoryblokClient => {
   return storyblokApiInstance;
 };
 
-export { useStoryblokBridge, apiPlugin, renderRichText } from "@storyblok/js";
+export {
+  useStoryblokBridge,
+  apiPlugin,
+  renderRichText,
+  RichTextSchema,
+} from "@storyblok/js";
 import StoryblokComponent from "./StoryblokComponent.vue";
 export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
