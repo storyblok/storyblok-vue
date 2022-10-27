@@ -273,7 +273,7 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
 
 #### Storyblok API
 
-You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok):
+You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok). For spaces created in the United States, you have to set the `region` parameter accordingly `{ apiOptions: { region: 'us' } }`.
 
 ```js
 app.use(StoryblokVue, {
