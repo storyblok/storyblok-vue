@@ -10,5 +10,8 @@
     "@vitejs/plugin-vue": "^2.3.4",
     "vite": "^3.1.0",
     "vue": "^3.2.39"
+  },
+  "dependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.0.1"
   }
 }
