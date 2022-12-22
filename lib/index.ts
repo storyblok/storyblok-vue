@@ -11,8 +11,8 @@ import type {
   StoryblokClient,
   SbSDKOptions,
   StoryblokBridgeConfigV2,
-  StoryData,
-  StoriesParams,
+  ISbStoryData,
+  ISbStoriesParams,
 } from "./types";
 
 const vEditableDirective: Directive<HTMLElement> = {
@@ -42,16 +42,18 @@ export {
   apiPlugin,
   renderRichText,
   RichTextSchema,
+  RichTextResolver,
 } from "@storyblok/js";
+
 import StoryblokComponent from "./StoryblokComponent.vue";
 export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
 export const useStoryblok = async (
   url: string,
-  apiOptions: StoriesParams = {},
+  apiOptions: ISbStoriesParams = {},
   bridgeOptions: StoryblokBridgeConfigV2 = {}
 ) => {
-  const story: Ref<StoryData> = ref(null);
+  const story: Ref<ISbStoryData> = ref(null);
 
   onMounted(() => {
     if (story.value && story.value.id) {

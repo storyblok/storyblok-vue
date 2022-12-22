@@ -18,7 +18,7 @@ export default defineConfig(() => {
             vue: "Vue",
           },
         },
-        external: ["axios", "vue"], // FIX: temporary till we remove axios dependency in storyblok-js-client
+        external: ["vue"],
       },
     },
     plugins: [vue()],
