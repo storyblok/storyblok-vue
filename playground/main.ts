@@ -12,6 +12,7 @@ app.use(StoryblokVue, {
   accessToken: "OurklwV5XsDJTIE1NJaD2wtt",
   use: [apiPlugin], // use it only if you need it
   // apiOptions: { https: true },
+  bridge: true,
 });
 
 app.component("Page", Page);

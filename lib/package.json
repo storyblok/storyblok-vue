@@ -19,8 +19,8 @@
     "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest __tests__",
-    "test:e2e": "cypress run",
-    "test:e2e-watch": "cypress open",
+    "test:e2e": "cypress run --component",
+    "test:e2e-watch": "cypress open --component",
     "prepublishOnly": "npm run build && cp ../README.md ./"
   },
   "dependencies": {

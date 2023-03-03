@@ -15,6 +15,7 @@
     "build:ts": "vite build && tsc --prokect tsconfigjson",
     "test:unit": "npm run test:unit --workspace=lib",
     "test:e2e": "npm run test:e2e --workspace=lib",
+    "test:components": "npm run test:components --workspace=lib",
     "prepare": "husky install"
   },
   "devDependencies": {
