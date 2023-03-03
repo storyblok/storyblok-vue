@@ -10,6 +10,6 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Vue",
-  "include": ["./*.vue", "./**/*.ts"],
+  "include": ["./*.vue", "./**/*.ts", "cypress.config.ts"],
   "exclude": ["node_modules/*", "vite.config.ts", "dist"]
 }

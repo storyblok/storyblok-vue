@@ -15,19 +15,20 @@
     "build:ts": "vite build && tsc --prokect tsconfigjson",
     "test:unit": "npm run test:unit --workspace=lib",
     "test:e2e": "npm run test:e2e --workspace=lib",
+    "test:components": "npm run test:components --workspace=lib",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
-    "@rollup/plugin-typescript": "^10.0.1",
-    "@typescript-eslint/parser": "^5.37.0",
-    "eslint": "^8.23.1",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-vue": "^8.7.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.6.2"
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4"
   },
   "lint-staged": {
     "*.{vue,js,css,ts}": [
