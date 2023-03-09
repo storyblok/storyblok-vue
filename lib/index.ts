@@ -56,7 +56,10 @@ export const useStoryblok = async (
   const story: Ref<ISbStoryData> = ref(null);
 
   onMounted(() => {
-    if (story.value && story.value.id) {
+    const storyId = new URL(window.location.href).searchParams.get(
+      "_storyblok"
+    );
+    if (story.value && story.value.id && story.value.id == +storyId) {
       useStoryblokBridge(
         story.value.id,
         (evStory) => (story.value = evStory),
