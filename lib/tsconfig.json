@@ -5,7 +5,8 @@
     "strict": false,
     "declaration": true,
     "declarationDir": "dist",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "ignoreDeprecations": "5.0"
   },
   "extends": "@vue/tsconfig/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
