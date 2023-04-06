@@ -275,7 +275,7 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
 
 #### Storyblok API
 
-You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok). For spaces created in the United States, you have to set the `region` parameter accordingly `{ apiOptions: { region: 'us' } }`.
+You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok).
 
 ```js
 app.use(StoryblokVue, {
@@ -293,6 +293,28 @@ If you prefer to use your own fetch method, just remove the `apiPlugin` and `sto
 ```js
 app.use(StoryblokVue);
 ```
+
+#### Region parameter
+
+Possible values:
+
+- `eu` (default): For spaces created in the EU
+- `us`: For spaces created in the US
+- `cn`: For spaces created in China
+
+Full example for a space created in the US:
+
+```js
+app.use(StoryblokVue, {
+  accessToken: "<your-token>",
+  use: [apiPlugin],
+  apiOptions: {
+    region: "us",
+  },
+});
+```
+
+> Note: For spaces created in the United States or China, the `region` parameter **must** be specified.
 
 #### Storyblok Bridge
 
@@ -317,6 +339,10 @@ sbBridge.on(["input", "published", "change"], (event) => {
 ### Compatibility
 
 This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). In short: all modern browsers, dropping IE support.
+
+## The Storyblok JavaScript SDK Ecosystem
+
+![A visual representation of the Storyblok JavaScript SDK Ecosystem](https://a.storyblok.com/f/88751/2400x1350/be4a4a4180/sdk-ecosystem.png/m/1200x0)
 
 ## 🔗 Related Links
 
