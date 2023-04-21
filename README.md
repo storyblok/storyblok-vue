@@ -114,6 +114,38 @@ Use `useStoryblok` in your pages to fetch Storyblok stories and listen to real-t
 </template>
 ```
 
+#### Using slots
+
+You can use slots to insert slot content into the dynamic component:
+
+```html
+<script setup>
+  import { useStoryblok } from "@storyblok/vue";
+  const story = await useStoryblok("path-to-story", { version: "draft" });
+</script>
+
+<template>
+  <StoryblokComponent v-if="story" :blok="story.content">
+    <MyCustomComponent />
+  </StoryblokComponent>
+</template>
+```
+
+And then in the dynamic component that `StoryblokComponent` uses, you can render the slot content as you would with regular Vue slots:
+
+```html
+<template>
+  <div>
+    <!-- Some content -->
+
+    <!-- The slot content MyCustomComponent will be rendered here -->
+    <slot></slot>
+    
+    <!-- Some more content -->
+  </div>
+</template>
+```
+
 #### Rendering Rich Text
 
 You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
