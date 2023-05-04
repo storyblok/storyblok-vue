@@ -9,7 +9,6 @@ export default defineConfig(() => {
   return {
     test: {
       globals: true,
-      environment: "jsdom",
     },
     build: {
       lib: {
