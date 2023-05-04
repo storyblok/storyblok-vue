@@ -5,11 +5,12 @@
     "strict": false,
     "declaration": true,
     "declarationDir": "dist",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "types": ["vite/client", "node", "vitest/globals"]
   },
   "extends": "@vue/tsconfig/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Vue",
   "include": ["./*.vue", "./**/*.ts", "cypress.config.ts"],
-  "exclude": ["node_modules/*", "vite.config.ts", "dist"]
+  "exclude": ["node_modules/*", "vite.config.ts", "dist", "./**/*.test.ts"]
 }

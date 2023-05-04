@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "ESNext",
-    "strict": false
+    "strict": false,
+    "types": ["vite/client", "node", "vitest/globals"]
   },
   "extends": "@vue/tsconfig/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
