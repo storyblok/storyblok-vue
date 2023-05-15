@@ -1,8 +1,7 @@
 // import { mount } from "@vue/test-utils";
 // import Component from "../index";
-
-import { StoryblokVue /* useStoryblok */ } from "..";
-/* import MockStoryblokClient from './mocks/storyblok-client'; */
+import { describe, test, expect } from "vitest";
+import { StoryblokVue } from "..";
 import { withSetup } from "./withSetup";
 
 describe("@storyblok/vue", () => {
@@ -15,8 +14,4 @@ describe("@storyblok/vue", () => {
     expect(app.component("StoryblokComponent")).toBeTruthy();
     expect(app._context.directives.editable).toBeTruthy();
   });
-
-  /* test("useStoryblok", async () => {
-
-  }); */
 });

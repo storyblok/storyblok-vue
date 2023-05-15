@@ -3,7 +3,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "strict": false,
-    "types": ["vite/client", "node", "vitest/globals"]
+    "types": ["vite/client", "node"]
   },
   "extends": "@vue/tsconfig/tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
