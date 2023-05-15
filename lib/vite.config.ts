@@ -7,9 +7,6 @@ const name = "storyblok-vue";
 
 export default defineConfig(() => {
   return {
-    test: {
-      globals: true,
-    },
     build: {
       lib: {
         entry: path.resolve(__dirname, "index.ts"),
