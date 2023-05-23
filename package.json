@@ -22,7 +22,7 @@
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
     "@rollup/plugin-typescript": "^11.1.1",
-    "@typescript-eslint/parser": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.7",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-vue": "^9.9.0",
