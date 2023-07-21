@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.7",
     "@rollup/plugin-typescript": "^11.1.2",
     "@typescript-eslint/parser": "^6.1.0",
     "eslint": "^8.45.0",
