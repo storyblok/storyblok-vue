@@ -101,18 +101,24 @@ app.component("Page", Page);
 app.component("Teaser", Teaser);
 ```
 
-Use `useStoryblok` in your pages to fetch Storyblok stories and listen to real-time updates, as well as `StoryblokComponent` to render any component you've loaded before, like in this example:
+The simplest way is by using the `useStoryblok` one-liner composable. Where you need to pass as first parameter the `slug`, while the second and third parameters, `apiOptions` and `bridgeOptions` respectively, are optional:
 
 ```html
 <script setup>
   import { useStoryblok } from "@storyblok/vue";
-  const story = await useStoryblok("path-to-story", { version: "draft" });
+  const { story, fetchState } = useStoryblok(
+    "path-to-story",
+    { version: "draft", resolve_relations: "Article.author" }, // API Options
+    { resolveRelations: ["Article.author"], resolveLinks: "url" } // Bridge Options
+  );
 </script>
 
 <template>
   <StoryblokComponent v-if="story" :blok="story.content" />
 </template>
 ```
+
+Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
 
 #### Rendering Rich Text
 
@@ -194,7 +200,10 @@ Inject `storyblokApi` when using Composition API:
   import { useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
+  const { data } = await storyblokApi.get(
+    "cdn/stories/home",
+    { version: "draft", resolve_relations: "Article.author" } // API Options
+  );
 </script>
 ```
 
@@ -210,7 +219,10 @@ Use `useStoryBridge` to get the new story every time is triggered a `change` eve
   import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
+  const { data } = await storyblokApi.get(
+    "cdn/stories/home",
+    { version: "draft", resolve_relations: "Article.author" } // API Options
+  );
   const state = reactive({ story: data.story });
 
   onMounted(() => {
@@ -222,9 +234,14 @@ Use `useStoryBridge` to get the new story every time is triggered a `change` eve
 You can pass [Bridge options](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) as a third parameter as well:
 
 ```js
-useStoryblokBridge(state.story.id, (story) => (state.story = story), {
-  resolveRelations: ["Article.author"],
-});
+useStoryblokBridge(
+  state.story.id,
+  (story) => (state.story = story),
+  {
+    resolveRelations: ["Article.author"],
+    resolveLinks: "url",
+  } // Bridge Options
+);
 ```
 
 ##### 3. Link your components to Storyblok Visual Editor
@@ -252,7 +269,11 @@ This example of `useStoryblok`:
 ```html
 <script setup>
   import { useStoryblok } from "@storyblok/vue";
-  const story = await useStoryblok("home", { version: "draft" });
+  const story = await useStoryblok(
+    "blog",
+    { version: "draft", resolve_relations: "Article.author" }, // API Options
+    { resolveRelations: ["Article.author"], resolveLinks: "url" } // Bridge Options
+  );
 </script>
 ```
 
@@ -264,18 +285,27 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
   import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/stories/home", { version: "draft" });
+  const { data } = await storyblokApi.get(
+    "cdn/stories/blog",
+    { version: "draft", resolve_relations: "Article.author" }, // API Options
+  );
   const state = reactive({ story: data.story });
 
   onMounted(() => {
-    useStoryblokBridge(state.story.id, story => (state.story = story));
+    useStoryblokBridge(
+      state.story.id,
+      story => (state.story = story),
+      { resolveRelations: ["Article.author"], resolveLinks: "url" } // Bridge Options
+    );
   });
 </script>
 ```
 
+Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to `storyblok-js-client`) and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to the Storyblok Bridge).
+
 #### Storyblok API
 
-You can use an `apiOptions` object. This is passed down to the (storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok).
+You can use an `apiOptions` object. This is passed down to the [storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok).
 
 ```js
 app.use(StoryblokVue, {
