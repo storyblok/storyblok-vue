@@ -55,6 +55,12 @@ export const useStoryblok = async (
 ) => {
   const story: Ref<ISbStoryData> = ref(null);
 
+  bridgeOptions.resolveRelations =
+    bridgeOptions.resolveRelations ?? apiOptions.resolve_relations;
+
+  bridgeOptions.resolveLinks =
+    bridgeOptions.resolveLinks ?? apiOptions.resolve_links;
+
   onMounted(() => {
     if (story.value && story.value.id) {
       useStoryblokBridge(

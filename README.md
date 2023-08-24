@@ -103,6 +103,8 @@ app.component("Teaser", Teaser);
 
 The simplest way is by using the `useStoryblok` one-liner composable. Where you need to pass as first parameter the `slug`, while the second and third parameters, `apiOptions` and `bridgeOptions` respectively, are optional:
 
+> `resolveRelations` and `resolveLinks` from `bridgeOptions` can be excluded if you're already defining them as `resolve_relations` and `resolve_links` in `apiOptions`, we will add them by default. But you will always be able to overwrite them.
+
 ```html
 <script setup>
   import { useStoryblok } from "@storyblok/vue";
