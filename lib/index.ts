@@ -82,14 +82,30 @@ export const useStoryblok = async (
   return story;
 };
 
+import FallbackComponent from "./FallbackComponent.vue";
+
+export interface SbVueSDKOptions extends SbSDKOptions {
+  enableFallbackComponent?: boolean;
+  customFallbackComponent?: string;
+}
+
 // Plugin
 export const StoryblokVue: Plugin = {
-  install(app, pluginOptions: SbSDKOptions = {}) {
+  install(app, pluginOptions: SbVueSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
 
+    if (
+      pluginOptions.enableFallbackComponent &&
+      !pluginOptions.customFallbackComponent
+    ) {
+      app.component("FallbackComponent", FallbackComponent);
+    }
+
     const { storyblokApi } = storyblokInit(pluginOptions);
     storyblokApiInstance = storyblokApi;
+
+    app.provide("VueSDKOptions", pluginOptions);
   },
 };
 
