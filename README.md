@@ -30,12 +30,14 @@
   </a>
 </p>
 
-**Note**: This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
+> **Note**
+> This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
 
 ## 🚀 Usage
 
 Check out the **[Live Demo](https://stackblitz.com/edit/vue-sdk-demo?file=src/main.js&terminal=dev)** on Stackblitz!
 
+> **Important**
 > If you are first-time user of the Storyblok, read the [Getting Started](https://www.storyblok.com/docs/guide/getting-started?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) guide to get a project ready in less than 5 minutes.
 
 ### Installation
@@ -47,7 +49,8 @@ npm install @storyblok/vue
 # yarn add @storyblok/vue
 ```
 
-> ⚠️ This SDK uses the Fetch API under the hood. If your environment doesn't support it, you need to install a polyfill like [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch). More info on [storyblok-js-client docs](https://github.com/storyblok/storyblok-js-client#fetch-use-polyfill-if-needed---version-5).
+> **Warning**
+> This SDK uses the Fetch API under the hood. If your environment doesn't support it, you need to install a polyfill like [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch). More info on [storyblok-js-client docs](https://github.com/storyblok/storyblok-js-client#fetch-use-polyfill-if-needed---version-5).
 
 Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
 
@@ -66,6 +69,7 @@ app.use(StoryblokVue, {
 
 That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
+> **Note**
 > You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section.
 
 #### From a CDN
@@ -103,7 +107,8 @@ app.component("Teaser", Teaser);
 
 The simplest way is by using the `useStoryblok` one-liner composable. Where you need to pass as first parameter the `slug`, while the second and third parameters, `apiOptions` and `bridgeOptions` respectively, are optional:
 
-> `resolveRelations` and `resolveLinks` from `bridgeOptions` can be excluded if you're already defining them as `resolve_relations` and `resolve_links` in `apiOptions`, we will add them by default. But you will always be able to overwrite them.
+> **Note**
+> The `resolveRelations` and `resolveLinks` from `bridgeOptions` can be excluded if you're already defining them as `resolve_relations` and `resolve_links` in `apiOptions`, we will add them by default. But you will always be able to overwrite them.
 
 ```html
 <script setup>
@@ -209,7 +214,8 @@ Inject `storyblokApi` when using Composition API:
 </script>
 ```
 
-> Note: you can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
+> **Note**
+> You can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
 
 ##### 2. Listen to Storyblok Visual Editor events
 
@@ -346,7 +352,8 @@ app.use(StoryblokVue, {
 });
 ```
 
-> Note: For spaces created in the United States or China, the `region` parameter **must** be specified.
+> **Important**
+> For spaces created in the United States or China, the `region` parameter **must** be specified.
 
 #### Storyblok Bridge
 
