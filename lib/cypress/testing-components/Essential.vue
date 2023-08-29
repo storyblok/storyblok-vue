@@ -8,7 +8,13 @@
       <i>data-blok-uid</i>
       attrs.
     </div>
-
+    <div data-test="editable-prod" v-editable="blokProd.content">
+      Open DevTools and inspect this &lt;div&gt;. You shouldn't see any
+      <i>data-blok-c</i>
+      or
+      <i>data-blok-uid</i>
+      attrs.
+    </div>
     <h3>
       <code>storyblokApi.get:</code>
       <span data-test="api">{{ apiExists }}</span>
@@ -24,6 +30,10 @@ const blok = {
   content: {
     _editable: `<!--#storyblok#{ "id": 12345, "uid": "fc34-uad1"}-->`,
   },
+};
+
+const blokProd = {
+  content: {},
 };
 
 const storyblokApi = useStoryblokApi();

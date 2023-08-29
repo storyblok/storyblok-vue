@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "demo": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@storyblok/vue": "^0.0.1",
