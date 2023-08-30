@@ -13,6 +13,7 @@ defineExpose({
   value: blokRef,
 });
 </script>
+
 <template>
   <component
     ref="blokRef"
