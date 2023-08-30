@@ -19,9 +19,11 @@ const vEditableDirective: Directive<HTMLElement> = {
   beforeMount(el, binding) {
     if (binding.value) {
       const options = storyblokEditable(binding.value);
-      el.setAttribute("data-blok-c", options["data-blok-c"]);
-      el.setAttribute("data-blok-uid", options["data-blok-uid"]);
-      el.classList.add("storyblok__outline");
+      if (Object.keys(options).length > 0) {
+        el.setAttribute("data-blok-c", options["data-blok-c"]);
+        el.setAttribute("data-blok-uid", options["data-blok-uid"]);
+        el.classList.add("storyblok__outline");
+      }
     }
   },
 };

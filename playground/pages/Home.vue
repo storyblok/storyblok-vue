@@ -2,9 +2,11 @@
 import { onMounted, ref } from "vue";
 import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
+const version = import.meta.env.MODE === "production" ? "published" : "draft";
+
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/stories/vue", {
-  version: "draft",
+  version,
 });
 
 const story = ref(null);
