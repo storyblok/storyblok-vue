@@ -1,4 +1,4 @@
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineAsyncComponent } from "vue";
 import type { Ref, Plugin, Directive } from "vue";
 
 import {
@@ -82,8 +82,6 @@ export const useStoryblok = async (
   return story;
 };
 
-import FallbackComponent from "./FallbackComponent.vue";
-
 export interface SbVueSDKOptions extends SbSDKOptions {
   enableFallbackComponent?: boolean;
   customFallbackComponent?: string;
@@ -99,7 +97,10 @@ export const StoryblokVue: Plugin = {
       pluginOptions.enableFallbackComponent &&
       !pluginOptions.customFallbackComponent
     ) {
-      app.component("FallbackComponent", FallbackComponent);
+      app.component(
+        "FallbackComponent",
+        defineAsyncComponent(() => import("./FallbackComponent.vue"))
+      );
     }
 
     const { storyblokApi } = storyblokInit(pluginOptions);
