@@ -375,6 +375,29 @@ sbBridge.on(["input", "published", "change"], (event) => {
 });
 ```
 
+#### Using Fallback components
+
+By default, `@storyblok/vue` show a `console.error` if a component is not implemented. Setting `enableFallbackComponent` to `true` bypasses that behavior, rendering a fallback component in the frontend instead.
+
+```js
+app.use(StoryblokVue, {
+  // ...
+  enableFallbackComponent: true,
+});
+```
+
+You can also create and use a custom fallback component by setting `customFallbackComponent: "MyCustomFallback"`.
+
+```js
+app.use(StoryblokVue, {
+  // ...
+  enableFallbackComponent: true,
+  customFallbackComponent: "MyCustomFallback",
+});
+
+app.component("MyCustomFallback", MyCustomFallback);
+```
+
 ### Compatibility
 
 This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). In short: all modern browsers, dropping IE support.
