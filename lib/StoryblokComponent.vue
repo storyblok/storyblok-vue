@@ -10,10 +10,10 @@ export interface SbComponentProps {
   blok: SbBlokData;
 }
 const props = defineProps<SbComponentProps>();
-const componentFound =
+const componentFound: boolean =
   typeof resolveDynamicComponent(props.blok.component) !== "string";
 
-// Fallback logic
+// Fallback component logic
 const VueSDKOptions: SbVueSDKOptions = inject("VueSDKOptions");
 
 const componentName = ref(props.blok.component);
@@ -26,9 +26,14 @@ if (!componentFound) {
       `Component could not be found for blok "${props.blok.component}"! Is it defined in main.ts as "app.component("${props.blok.component}", ${props.blok.component});"?`
     ); */
   } else {
-    const fallbackComponentName =
+    componentName.value =
       VueSDKOptions.customFallbackComponent ?? "FallbackComponent";
-    componentName.value = fallbackComponentName;
+
+    if (typeof resolveDynamicComponent(componentName.value) === "string") {
+      console.error(
+        `Is the Fallback component "${componentName.value}" registered properly?`
+      );
+    }
   }
 }
 </script>

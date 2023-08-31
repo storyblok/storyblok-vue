@@ -389,6 +389,8 @@ app.use(StoryblokVue, {
 You can also create and use a custom fallback component by setting `customFallbackComponent: "MyCustomFallback"`.
 
 ```js
+import MyCustomFallback from "./components/MyCustomFallback.vue";
+
 app.use(StoryblokVue, {
   // ...
   enableFallbackComponent: true,

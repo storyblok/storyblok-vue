@@ -83,7 +83,13 @@ export const useStoryblok = async (
 };
 
 export interface SbVueSDKOptions extends SbSDKOptions {
+  /**
+   * Show a fallback component in your frontend if a component is not registered properly.
+   */
   enableFallbackComponent?: boolean;
+  /**
+   * Provide a custom fallback component, e.g. "CustomFallback".
+   */
   customFallbackComponent?: string;
 }
 
