@@ -22,9 +22,6 @@ if (!componentFound) {
     console.error(
       `Component could not be found for blok "${props.blok.component}"! Is it defined in main.ts as "app.component("${props.blok.component}", ${props.blok.component});"?`
     );
-    /* throw new Error(
-      `Component could not be found for blok "${props.blok.component}"! Is it defined in main.ts as "app.component("${props.blok.component}", ${props.blok.component});"?`
-    ); */
   } else {
     componentName.value =
       VueSDKOptions.customFallbackComponent ?? "FallbackComponent";
