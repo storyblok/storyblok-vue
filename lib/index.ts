@@ -1,4 +1,4 @@
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineAsyncComponent } from "vue";
 import type { Ref, Plugin, Directive } from "vue";
 
 import {
@@ -84,14 +84,37 @@ export const useStoryblok = async (
   return story;
 };
 
+export interface SbVueSDKOptions extends SbSDKOptions {
+  /**
+   * Show a fallback component in your frontend if a component is not registered properly.
+   */
+  enableFallbackComponent?: boolean;
+  /**
+   * Provide a custom fallback component, e.g. "CustomFallback".
+   */
+  customFallbackComponent?: string;
+}
+
 // Plugin
 export const StoryblokVue: Plugin = {
-  install(app, pluginOptions: SbSDKOptions = {}) {
+  install(app, pluginOptions: SbVueSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
 
+    if (
+      pluginOptions.enableFallbackComponent &&
+      !pluginOptions.customFallbackComponent
+    ) {
+      app.component(
+        "FallbackComponent",
+        defineAsyncComponent(() => import("./FallbackComponent.vue"))
+      );
+    }
+
     const { storyblokApi } = storyblokInit(pluginOptions);
     storyblokApiInstance = storyblokApi;
+
+    app.provide("VueSDKOptions", pluginOptions);
   },
 };
 

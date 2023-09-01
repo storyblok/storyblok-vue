@@ -35,3 +35,5 @@ export type {
   StoryblokBridgeV2,
   StoryblokClient,
 } from "@storyblok/js";
+
+export type { SbVueSDKOptions } from "./index";
