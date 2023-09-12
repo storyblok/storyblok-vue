@@ -28,7 +28,7 @@
     "@storyblok/js": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
+    "@babel/core": "^7.22.17",
     "@cypress/vite-dev-server": "^5.0.6",
     "@cypress/vue": "^6.0.0",
     "@vitejs/plugin-vue": "^4.3.4",
