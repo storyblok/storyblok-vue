@@ -1,4 +1,4 @@
-import { ref, onMounted } from "vue";
+import { ref, onMounted, defineAsyncComponent } from "vue";
 import type { Ref, Plugin, Directive } from "vue";
 
 import {
@@ -19,9 +19,11 @@ const vEditableDirective: Directive<HTMLElement> = {
   beforeMount(el, binding) {
     if (binding.value) {
       const options = storyblokEditable(binding.value);
-      el.setAttribute("data-blok-c", options["data-blok-c"]);
-      el.setAttribute("data-blok-uid", options["data-blok-uid"]);
-      el.classList.add("storyblok__outline");
+      if (Object.keys(options).length > 0) {
+        el.setAttribute("data-blok-c", options["data-blok-c"]);
+        el.setAttribute("data-blok-uid", options["data-blok-uid"]);
+        el.classList.add("storyblok__outline");
+      }
     }
   },
 };
@@ -82,14 +84,37 @@ export const useStoryblok = async (
   return story;
 };
 
+export interface SbVueSDKOptions extends SbSDKOptions {
+  /**
+   * Show a fallback component in your frontend if a component is not registered properly.
+   */
+  enableFallbackComponent?: boolean;
+  /**
+   * Provide a custom fallback component, e.g. "CustomFallback".
+   */
+  customFallbackComponent?: string;
+}
+
 // Plugin
 export const StoryblokVue: Plugin = {
-  install(app, pluginOptions: SbSDKOptions = {}) {
+  install(app, pluginOptions: SbVueSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
 
+    if (
+      pluginOptions.enableFallbackComponent &&
+      !pluginOptions.customFallbackComponent
+    ) {
+      app.component(
+        "FallbackComponent",
+        defineAsyncComponent(() => import("./FallbackComponent.vue"))
+      );
+    }
+
     const { storyblokApi } = storyblokInit(pluginOptions);
     storyblokApiInstance = storyblokApi;
+
+    app.provide("VueSDKOptions", pluginOptions);
   },
 };
 

@@ -5,6 +5,7 @@ import Page from "./components/Page.vue";
 import Teaser from "./components/Teaser.vue";
 import Grid from "./components/Grid.vue";
 import Feature from "./components/Feature.vue";
+// import MyCustomFallback from "./components/MyCustomFallback.vue";
 
 const app = createApp(App);
 
@@ -13,11 +14,14 @@ app.use(StoryblokVue, {
   use: [apiPlugin], // use it only if you need it
   // apiOptions: { https: true },
   bridge: true,
+  // enableFallbackComponent: true,
+  // customFallbackComponent: "MyCustomFallback"
 });
 
 app.component("Page", Page);
-app.component("Teaser", Teaser);
+app.component("Teaser", Teaser); // Comment to check fallback behavior
 app.component("Grid", Grid);
 app.component("Feature", Feature);
+// app.component("MyCustomFallback", MyCustomFallback)
 
 app.mount("#app");
