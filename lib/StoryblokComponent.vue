@@ -1,7 +1,3 @@
-<template>
-  <component :is="componentName" v-bind="{ ...$props, ...$attrs }"></component>
-</template>
-
 <script setup lang="ts">
 import { ref, resolveDynamicComponent, inject } from "vue";
 import type { SbBlokData, SbVueSDKOptions } from "./types";
@@ -10,6 +6,13 @@ export interface SbComponentProps {
   blok: SbBlokData;
 }
 const props = defineProps<SbComponentProps>();
+
+const blokRef = ref();
+
+defineExpose({
+  value: blokRef,
+});
+
 const componentFound: boolean =
   typeof resolveDynamicComponent(props.blok.component) !== "string";
 
@@ -34,3 +37,11 @@ if (!componentFound) {
   }
 }
 </script>
+
+<template>
+  <component
+    ref="blokRef"
+    :is="componentName"
+    v-bind="{ ...$props, ...$attrs }"
+  ></component>
+</template>

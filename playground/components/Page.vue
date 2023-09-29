@@ -1,3 +1,7 @@
+<script setup>
+defineProps({ blok: Object });
+</script>
+
 <template>
   <div v-editable="blok" class="px-6" data-test="page">
     <StoryblokComponent
@@ -7,7 +11,3 @@
     />
   </div>
 </template>
-
-<script setup>
-defineProps({ blok: Object });
-</script>
