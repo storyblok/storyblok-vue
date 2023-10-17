@@ -77,7 +77,11 @@
   "homepage": "https://github.com/storyblok/storyblok-vue",
   "release": {
     "branches": [
-      "main"
+      "main",
+      {
+        "name": "next",
+        "prerelease": true
+      }
     ]
   },
   "publishConfig": {
