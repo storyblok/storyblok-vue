@@ -9,7 +9,7 @@
   "devDependencies": {
     "@storyblok/vue": "^0.0.1",
     "@vitejs/plugin-vue": "^4.4.0",
-    "vite": "^4.4.11",
+    "vite": "^4.5.0",
     "vue": "^3.3.4"
   },
   "dependencies": {
