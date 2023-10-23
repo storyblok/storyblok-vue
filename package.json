@@ -19,7 +19,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.8.0",
+    "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^17.8.0",
     "@rollup/plugin-typescript": "^11.1.5",
     "@typescript-eslint/parser": "^6.8.0",
