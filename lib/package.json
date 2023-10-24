@@ -81,6 +81,10 @@
       {
         "name": "next",
         "prerelease": true
+      },
+      {
+        "name": "beta",
+        "prerelease": true
       }
     ]
   },
