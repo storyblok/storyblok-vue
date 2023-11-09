@@ -31,7 +31,7 @@
     "@babel/core": "^7.23.2",
     "@cypress/vite-dev-server": "^5.0.6",
     "@cypress/vue": "^6.0.0",
-    "@vitejs/plugin-vue": "^4.4.0",
+    "@vitejs/plugin-vue": "^4.4.1",
     "@vue/babel-preset-app": "^5.0.8",
     "@vue/test-utils": "2.4.1",
     "@vue/tsconfig": "^0.1.3",
