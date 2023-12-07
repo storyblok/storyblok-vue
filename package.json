@@ -23,7 +23,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@rollup/plugin-typescript": "^11.1.5",
     "@typescript-eslint/parser": "^6.13.1",
-    "eslint": "^8.54.0",
+    "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^8.0.3",
