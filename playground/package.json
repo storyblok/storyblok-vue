@@ -13,6 +13,6 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "@vitejs/plugin-basic-ssl": "^1.0.2"
+    "@vitejs/plugin-basic-ssl": "^1.1.0"
   }
 }
