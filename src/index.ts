@@ -7,6 +7,17 @@ import {
   useStoryblokBridge,
 } from "@storyblok/js";
 
+export {
+  useStoryblokBridge,
+  apiPlugin,
+  renderRichText,
+  RichTextSchema,
+  RichTextResolver,
+} from "@storyblok/js";
+
+import StoryblokComponent from "./components/StoryblokComponent.vue";
+export { default as StoryblokComponent } from "./components/StoryblokComponent.vue";
+
 import type {
   StoryblokClient,
   SbSDKOptions,
@@ -28,7 +39,7 @@ const vEditableDirective: Directive<HTMLElement> = {
   },
 };
 
-const printError = (fnName) => {
+const printError = (fnName: string) => {
   console.error(`You can't use ${fnName} if you're not loading apiPlugin. Please provide it on StoryblokVue initialization.
     `);
 };
@@ -38,17 +49,6 @@ export const useStoryblokApi = (): StoryblokClient => {
   if (!storyblokApiInstance) printError("useStoryblokApi");
   return storyblokApiInstance;
 };
-
-export {
-  useStoryblokBridge,
-  apiPlugin,
-  renderRichText,
-  RichTextSchema,
-  RichTextResolver,
-} from "@storyblok/js";
-
-import StoryblokComponent from "./StoryblokComponent.vue";
-export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
 export const useStoryblok = async (
   url: string,
@@ -107,7 +107,7 @@ export const StoryblokVue: Plugin = {
     ) {
       app.component(
         "FallbackComponent",
-        defineAsyncComponent(() => import("./FallbackComponent.vue"))
+        defineAsyncComponent(() => import("./components/FallbackComponent.vue"))
       );
     }
 

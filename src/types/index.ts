@@ -1,4 +1,4 @@
-import type StoryblokComponent from "./StoryblokComponent.vue";
+import type StoryblokComponent from "../components/StoryblokComponent.vue";
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
@@ -36,4 +36,4 @@ export type {
   StoryblokClient,
 } from "@storyblok/js";
 
-export type { SbVueSDKOptions } from "./index";
+export type { SbVueSDKOptions } from "../index";

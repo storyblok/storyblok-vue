@@ -1,15 +1,5 @@
-<template>
-  <div class="fallback-component">
-    <p>
-      Component could not be found for blok
-      <span class="component">{{ blok.component }}</span
-      >! Is it configured correctly?
-    </p>
-  </div>
-</template>
-
 <script setup lang="ts">
-import type { SbBlokData } from "./types";
+import type { SbBlokData } from "../types";
 
 export interface SbComponentProps {
   blok: SbBlokData;
@@ -30,3 +20,12 @@ span.component {
   font-weight: bold;
 }
 </style>
+<template>
+  <div class="fallback-component">
+    <p>
+      Component could not be found for blok
+      <span class="component">{{ blok.component }}</span
+      >! Is it configured correctly?
+    </p>
+  </div>
+</template>

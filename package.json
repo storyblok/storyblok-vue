@@ -1,21 +1,52 @@
 {
-  "name": "@storyblok/vue-ws",
-  "private": true,
-  "version": "0.0.1",
-  "workspaces": [
-    "./lib",
-    "./playground"
+  "name": "@storyblok/vue",
+  "type": "module",
+  "version": "8.0.7",
+  "packageManager": "pnpm@8.10.2",
+  "description": "Storyblok Vue SDK",
+  "author": "Alvaro Saburido <alvaro.saburido@storyblok.com> (https://github.com/alvarosabu/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storyblok/storyblok-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/storyblok/storyblok-vue/issues"
+  },
+  "homepage": "https://github.com/storyblok/storyblok-vue",
+  "keywords": [
+    "vue",
+    "storyblok"
   ],
-  "types": "./dist/types.index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/storyblok-vue.mjs",
+      "require": "./dist/storyblok-vue.js"
+    }
+  },
+  "import": "./dist/storyblok-vue.mjs",
+  "require": "./dist/storyblok-vue.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "*.d.ts",
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "dev": "npm run dev --workspace=lib & npm run demo",
-    "demo": "npm run demo --workspace=playground",
-    "demo-vca": "npm run demo --workspace=playground-vca",
-    "build": "npm run build --workspace=lib",
-    "build:ts": "vite build && tsc --prokect tsconfigjson",
-    "test:unit": "npm run test:unit --workspace=lib",
-    "test:e2e": "npm run test:e2e --workspace=lib",
-    "test:components": "npm run test:components --workspace=lib",
+    "dev": "vite",
+    "build": "vite build",
+    "build:packages": "pnpm -r --filter='./packages/*' run build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage",
+    "playground": "cd playground && npm run dev",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -23,12 +54,26 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@rollup/plugin-typescript": "^11.1.6",
     "@typescript-eslint/parser": "^7.5.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitest/ui": "^1.4.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.9.0",
     "husky": "^9.0.11",
+    "kolorist": "^1.8.0",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "pathe": "^1.1.2",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "vite-plugin-banner": "^0.7.1",
+    "vite-plugin-dts": "^3.8.1",
+    "vite-plugin-inspect": "^0.8.3",
+    "vite-plugin-qrcode": "^0.2.3",
+    "vitest": "^1.4.0",
+    "vue": "^3.4.21",
+    "vue-tsc": "^1.8.0"
   },
   "lint-staged": {
     "*.{vue,js,css,ts}": [
@@ -70,5 +115,21 @@
     "tabWidth": 2,
     "semi": true,
     "singleQuote": false
+  },
+  "release": {
+    "branches": [
+      "main",
+      {
+        "name": "next",
+        "prerelease": true
+      },
+      {
+        "name": "beta",
+        "prerelease": true
+      }
+    ]
+  },
+  "dependencies": {
+    "@storyblok/js": "^3.0.7"
   }
 }

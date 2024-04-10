@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, resolveDynamicComponent, inject } from "vue";
-import type { SbBlokData, SbVueSDKOptions } from "./types";
+import type { SbBlokData, SbVueSDKOptions } from "../types";
 
 export interface SbComponentProps {
   blok: SbBlokData;
