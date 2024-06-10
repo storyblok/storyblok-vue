@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
-    "@cypress/vite-dev-server": "^5.1.0",
-    "@cypress/vue": "^6.0.0",
+    "@cypress/vite-dev-server": "^5.1.1",
+    "@cypress/vue": "^6.0.1",
     "@vitejs/plugin-vue": "^5.0.5",
     "@vue/babel-preset-app": "^5.0.8",
     "@vue/test-utils": "2.4.6",
