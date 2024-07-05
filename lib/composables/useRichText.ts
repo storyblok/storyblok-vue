@@ -5,10 +5,7 @@ import type {
   NodeResolver,
   SbRichtextOptions,
 } from "@storyblok/richtext";
-import {
-  BlockTypes,
-  /* MarkTypes, */ richTextResolver,
-} from "@storyblok/richtext";
+import { BlockTypes, richTextResolver } from "@storyblok/richtext";
 import StoryblokComponent from "../StoryblokComponent.vue";
 
 const componentResolver: NodeResolver<VNode> = (node: Node<VNode>): VNode => {
