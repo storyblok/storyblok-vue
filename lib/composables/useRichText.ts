@@ -1,7 +1,5 @@
 import type { VNode } from "vue";
 import { createTextVNode, h } from "vue";
-/* import { RouterLink } from 'vue-router'
- */
 import type {
   Node,
   NodeResolver,
@@ -29,17 +27,6 @@ export function useSbRichtext(options: SbRichtextOptions<VNode>) {
     renderFn: h,
     textFn: createTextVNode,
     resolvers: {
-      /* [MarkTypes.LINK]: (node: Node<VNode>) => {
-        return node.attrs?.linktype === 'STORY'
-          ? h(RouterLink, {
-            to: node.attrs?.href,
-            target: node.attrs?.target,
-          }, node.text)
-          : h('a', {
-            href: node.attrs?.href,
-            target: node.attrs?.target,
-          }, node.text)
-      }, */
       [BlockTypes.COMPONENT]: componentResolver,
       ...options.resolvers,
     },
