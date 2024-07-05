@@ -22,7 +22,7 @@ const componentResolver: NodeResolver<VNode> = (node: Node<VNode>): VNode => {
   );
 };
 
-export function useSbRichtext(options: SbRichtextOptions<VNode>) {
+export function useSbRichText(options: SbRichtextOptions<VNode>) {
   const mergedOptions: SbRichtextOptions<VNode> = {
     renderFn: h,
     textFn: createTextVNode,
