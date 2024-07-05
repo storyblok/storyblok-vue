@@ -36,7 +36,7 @@
 ## Kickstart a new project
 Are you eager to dive into coding? **[Follow these steps to kickstart a new project with Storyblok and Vue](https://www.storyblok.com/technologies#vue?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)**, and get started in just a few minutes!
 
-## Tutorial
+## 5-minute Tutorial
 Are you looking for a hands-on, step-by-step tutorial? The **[Vue 5-minute Tutorial](https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)** has you covered! It provides comprehensive instructions on how to set up a Storyblok space and connect it to your Vue project.
 
 ## Installation
