@@ -9,11 +9,26 @@ import {
 
 import type {
   StoryblokClient,
-  SbSDKOptions,
   StoryblokBridgeConfigV2,
   ISbStoryData,
   ISbStoriesParams,
+  SbVueSDKOptions,
 } from "./types";
+
+export {
+  useStoryblokBridge,
+  apiPlugin,
+  renderRichText,
+  RichTextSchema,
+  RichTextResolver,
+} from "@storyblok/js";
+
+import StoryblokComponent from "./StoryblokComponent.vue";
+export { default as StoryblokComponent } from "./StoryblokComponent.vue";
+import SbRichText from "./components/SbRichText.vue";
+export { default as SbRichText } from "./components/SbRichText.vue";
+
+export * from "./composables/useRichText";
 
 const vEditableDirective: Directive<HTMLElement> = {
   beforeMount(el, binding) {
@@ -38,17 +53,6 @@ export const useStoryblokApi = (): StoryblokClient => {
   if (!storyblokApiInstance) printError("useStoryblokApi");
   return storyblokApiInstance;
 };
-
-export {
-  useStoryblokBridge,
-  apiPlugin,
-  renderRichText,
-  RichTextSchema,
-  RichTextResolver,
-} from "@storyblok/js";
-
-import StoryblokComponent from "./StoryblokComponent.vue";
-export { default as StoryblokComponent } from "./StoryblokComponent.vue";
 
 export const useStoryblok = async (
   url: string,
@@ -84,23 +88,12 @@ export const useStoryblok = async (
   return story;
 };
 
-export interface SbVueSDKOptions extends SbSDKOptions {
-  /**
-   * Show a fallback component in your frontend if a component is not registered properly.
-   */
-  enableFallbackComponent?: boolean;
-  /**
-   * Provide a custom fallback component, e.g. "CustomFallback".
-   */
-  customFallbackComponent?: string;
-}
-
 // Plugin
 export const StoryblokVue: Plugin = {
   install(app, pluginOptions: SbVueSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
-
+    app.component("SbRichText", SbRichText);
     if (
       pluginOptions.enableFallbackComponent &&
       !pluginOptions.customFallbackComponent

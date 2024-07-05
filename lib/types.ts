@@ -1,3 +1,4 @@
+import type { SbSDKOptions } from "@storyblok/js";
 import type StoryblokComponent from "./StoryblokComponent.vue";
 
 declare module "@vue/runtime-core" {
@@ -36,4 +37,13 @@ export type {
   StoryblokClient,
 } from "@storyblok/js";
 
-export type { SbVueSDKOptions } from "./index";
+export interface SbVueSDKOptions extends SbSDKOptions {
+  /**
+   * Show a fallback component in your frontend if a component is not registered properly.
+   */
+  enableFallbackComponent?: boolean;
+  /**
+   * Provide a custom fallback component, e.g. "CustomFallback".
+   */
+  customFallbackComponent?: string;
+}
