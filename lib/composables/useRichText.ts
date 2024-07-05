@@ -11,7 +11,7 @@ import {
   BlockTypes,
   /* MarkTypes, */ richTextResolver,
 } from "@storyblok/richtext";
-import { StoryblokComponent } from "@storyblok/vue";
+import StoryblokComponent from "../StoryblokComponent.vue";
 
 const componentResolver: NodeResolver<VNode> = (node: Node<VNode>): VNode => {
   return h(
