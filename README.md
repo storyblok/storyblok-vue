@@ -33,14 +33,13 @@
 > **Note**
 > This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
 
-## 🚀 Usage
+## Kickstart a new project
+Are you eager to dive into coding? **[Follow these steps to kickstart a new project with Storyblok and Vue](https://www.storyblok.com/technologies#vue?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)**, and get started in just a few minutes!
 
-Check out the **[Live Demo](https://stackblitz.com/edit/vue-sdk-demo?file=src/main.js&terminal=dev)** on Stackblitz!
+## 5-minute Tutorial
+Are you looking for a hands-on, step-by-step tutorial? The **[Vue 5-minute Tutorial](https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)** has you covered! It provides comprehensive instructions on how to set up a Storyblok space and connect it to your Vue project.
 
-> **Important**
-> If you are first-time user of the Storyblok, read the [Getting Started](https://www.storyblok.com/docs/guide/getting-started?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) guide to get a project ready in less than 5 minutes.
-
-### Installation
+## Installation
 
 Install `@storyblok/vue`
 
@@ -80,7 +79,7 @@ Install the file from the CDN and access the methods via `window.storyblokVue`:
 <script src="https://unpkg.com/@storyblok/vue"></script>
 ```
 
-### Getting started
+## Getting started
 
 `@storyblok/vue` does three actions when you initialize it:
 
@@ -88,7 +87,7 @@ Install the file from the CDN and access the methods via `window.storyblokVue`:
 - Loads [Storyblok Bridge](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) for real-time visual updates
 - Provides a `v-editable` directive to link editable components to the Storyblok Visual Editor
 
-#### Short Form
+### Short Form
 
 Load globally the Vue components you want to link to Storyblok in your _main.js_ file:
 
@@ -127,7 +126,7 @@ The simplest way is by using the `useStoryblok` one-liner composable. Where you 
 
 Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
 
-#### Rendering Rich Text
+### Rendering Rich Text
 
 You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
 
@@ -190,9 +189,9 @@ renderRichText(blok.richTextField, {
 });
 ```
 
-#### Long Form
+### Long Form
 
-##### 1. Fetching Content
+#### 1. Fetching Content
 
 Inject `storyblokApi` when using Composition API:
 
@@ -217,7 +216,7 @@ Inject `storyblokApi` when using Composition API:
 > **Note**
 > You can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
 
-##### 2. Listen to Storyblok Visual Editor events
+#### 2. Listen to Storyblok Visual Editor events
 
 Use `useStoryBridge` to get the new story every time is triggered a `change` event from the Visual Editor. You need to pass the story id as first param, and a callback function as second param to update the new story:
 
@@ -252,7 +251,7 @@ useStoryblokBridge(
 );
 ```
 
-##### 3. Link your components to Storyblok Visual Editor
+#### 3. Link your components to Storyblok Visual Editor
 
 For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
@@ -266,11 +265,11 @@ Where `blok` is the actual blok data coming from [Storblok's Content Delivery AP
 
 Check out the [playground](/../../tree/next/playground) for a full example.
 
-### Features and API
+## Features and API
 
 You can **choose the features to use** when you initialize the plugin. In that way, you can improve Web Performance by optimizing your page load and save some bytes.
 
-#### useStoryblok(pathToStory, apiOptions = {}, bridgeOptions = {})
+### useStoryblok(pathToStory, apiOptions = {}, bridgeOptions = {})
 
 This example of `useStoryblok`:
 
@@ -311,7 +310,7 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
 
 Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to `storyblok-js-client`) and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to the Storyblok Bridge).
 
-#### Storyblok API
+### Storyblok API
 
 You can use an `apiOptions` object. This is passed down to the [storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok).
 
@@ -332,7 +331,7 @@ If you prefer to use your own fetch method, just remove the `apiPlugin` and `sto
 app.use(StoryblokVue);
 ```
 
-#### Region parameter
+## Region parameter
 
 Possible values:
 
@@ -357,7 +356,7 @@ app.use(StoryblokVue, {
 > **Important**
 > For spaces created in the United States or China, the `region` parameter **must** be specified.
 
-#### Storyblok Bridge
+## Storyblok Bridge
 
 You can conditionally load it by using the `bridge` option. Very useful if you want to disable it in production:
 
@@ -377,7 +376,7 @@ sbBridge.on(["input", "published", "change"], (event) => {
 });
 ```
 
-#### Using Fallback components
+## Using Fallback components
 
 By default, `@storyblok/vue` show a `console.error` if a component is not implemented. Setting `enableFallbackComponent` to `true` bypasses that behavior, rendering a fallback component in the frontend instead.
 
@@ -402,7 +401,7 @@ app.use(StoryblokVue, {
 app.component("MyCustomFallback", MyCustomFallback);
 ```
 
-### Compatibility
+## Compatibility
 
 This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). In short: all modern browsers, dropping IE support.
 
@@ -410,20 +409,20 @@ This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https:/
 
 ![A visual representation of the Storyblok JavaScript SDK Ecosystem](https://a.storyblok.com/f/88751/2400x1350/be4a4a4180/sdk-ecosystem.png/m/1200x0)
 
-## 🔗 Related Links
+## Further Resources
 
-- **[Add a headless CMS to Vue.js in 5 minutes](https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)**: Quick-start guide on getting up and running with Storyblok and Vue.
-- **[Storyblok & Vue.js on GitHub](https://github.com/search?q=org%3Astoryblok+topic%3Avue)**: Check all of our Vue.js open source repos.
-- **[Storyblok CLI](https://github.com/storyblok/storyblok)**: A simple CLI for scaffolding Storyblok projects and fieldtypes.
+- [Quick Start](https://www.storyblok.com/technologies?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)
+- [API Documentation](https://www.storyblok.com/docs/api?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)
+- [Developer Tutorials](https://www.storyblok.com/tutorials?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)
+- [Developer Guides](https://www.storyblok.com/docs/guide/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)
+- [FAQs](https://www.storyblok.com/faqs?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)
 
-## ℹ️ More Resources
-
-### Support
+## Support
 
 - Bugs or Feature Requests? [Submit an issue](/../../issues/new).
 - Do you have questions about Storyblok or you need help? [Join our Discord Community](https://discord.gg/jKrbAMz).
 
-### Contributing
+## Contributing
 
 Please see our [contributing guidelines](https://github.com/storyblok/.github/blob/master/contributing.md) and our [code of conduct](https://www.storyblok.com/trust-center#code-of-conduct?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 This project use [semantic-release](https://semantic-release.gitbook.io/semantic-release/) for generate new versions by using commit messages and we use the Angular Convention to naming the commits. Check [this question](https://semantic-release.gitbook.io/semantic-release/support/faq#how-can-i-change-the-type-of-commits-that-trigger-a-release) about it in semantic-release FAQ.
