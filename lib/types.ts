@@ -1,5 +1,7 @@
-import type { SbSDKOptions } from "@storyblok/js";
+import type { SbBlokData, SbSDKOptions } from "@storyblok/js";
 import type StoryblokComponent from "./StoryblokComponent.vue";
+import type { SbRichTextNode, SbRichTextResolvers } from "@storyblok/richtext";
+import type { VNode } from "vue";
 
 declare module "@vue/runtime-core" {
   export interface GlobalComponents {
@@ -46,4 +48,13 @@ export interface SbVueSDKOptions extends SbSDKOptions {
    * Provide a custom fallback component, e.g. "CustomFallback".
    */
   customFallbackComponent?: string;
+}
+
+export interface SbComponentProps {
+  blok: SbBlokData;
+}
+
+export interface SbRichTextProps {
+  doc: SbRichTextNode<VNode>;
+  resolvers?: SbRichTextResolvers<VNode>;
 }

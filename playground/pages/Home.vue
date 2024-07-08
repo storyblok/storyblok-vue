@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
+import { onMounted, ref, VNode } from "vue";
+import {
+  useStoryblokBridge,
+  useStoryblokApi,
+  SbRichText,
+  SbRichTextNode,
+  BlockTypes,
+} from "@storyblok/vue";
 
 const version = import.meta.env.MODE === "production" ? "published" : "draft";
 
@@ -16,8 +22,8 @@ onMounted(() => {
   useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
 });
 
-const doc = {
-  type: "doc",
+const doc: SbRichTextNode<VNode> = {
+  [BlockTypes.DOCUMENT]: "doc",
   content: [
     {
       type: "bullet_list",
@@ -74,6 +80,6 @@ const doc = {
 </script>
 
 <template>
-  <SbRichText :doc="doc" />
+  <SbRichText v-if="doc" :doc="doc" />
   <StoryblokComponent v-if="story" :blok="story.content" />
 </template>

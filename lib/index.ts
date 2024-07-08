@@ -15,6 +15,8 @@ import type {
   SbVueSDKOptions,
 } from "./types";
 
+export * from "@storyblok/richtext";
+
 export {
   useStoryblokBridge,
   apiPlugin,

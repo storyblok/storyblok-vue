@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useSbRichText } from "../composables/useRichText";
+import type { SbRichTextProps } from "../types";
 
-const props = defineProps<{ doc: any; resolvers?: any }>();
+const props = defineProps<SbRichTextProps>();
 
 const { render } = useSbRichText({
   resolvers: props.resolvers,
