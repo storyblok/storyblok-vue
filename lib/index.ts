@@ -15,7 +15,18 @@ import type {
   SbVueSDKOptions,
 } from "./types";
 
-export * from "@storyblok/richtext";
+export {
+  BlockTypes,
+  MarkTypes,
+  richTextResolver,
+  TextTypes,
+  type SbRichTextNodeTypes,
+  type SbRichTextNode,
+  type SbRichTextOptions,
+  type SbRichTextResolvers,
+  type SbRichTextNodeResolver,
+  type SbRichTextImageOptimizationOptions,
+} from "@storyblok/richtext";
 
 export {
   useStoryblokBridge,
