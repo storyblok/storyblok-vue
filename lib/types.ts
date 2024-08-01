@@ -1,6 +1,9 @@
 import type { SbBlokData, SbSDKOptions } from "@storyblok/js";
 import type StoryblokComponent from "./StoryblokComponent.vue";
-import type { SbRichTextNode, SbRichTextResolvers } from "@storyblok/richtext";
+import type {
+  SbRichTextDocumentNode,
+  SbRichTextResolvers,
+} from "@storyblok/richtext";
 import type { VNode } from "vue";
 
 declare module "@vue/runtime-core" {
@@ -55,6 +58,6 @@ export interface SbComponentProps {
 }
 
 export interface SbRichTextProps {
-  doc: SbRichTextNode<VNode>;
+  doc: SbRichTextDocumentNode;
   resolvers?: SbRichTextResolvers<VNode>;
 }

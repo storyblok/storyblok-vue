@@ -3,9 +3,9 @@ import { createTextVNode, h } from "vue";
 import type {
   SbRichTextNode,
   SbRichTextNodeResolver,
-  SbRichTextOptions,
-} from "@storyblok/richtext";
-import { BlockTypes, richTextResolver } from "@storyblok/richtext";
+  newSbRichTextOptions,
+} from "@storyblok/js";
+import { BlockTypes, richTextResolver } from "@storyblok/js";
 import StoryblokComponent from "../StoryblokComponent.vue";
 
 const componentResolver: SbRichTextNodeResolver<VNode> = (
@@ -21,8 +21,8 @@ const componentResolver: SbRichTextNodeResolver<VNode> = (
   );
 };
 
-export function useSbRichText(options: SbRichTextOptions<VNode>) {
-  const mergedOptions: SbRichTextOptions<VNode> = {
+export function useSbRichText(options: newSbRichTextOptions<VNode>) {
+  const mergedOptions: newSbRichTextOptions<VNode> = {
     renderFn: h,
     textFn: createTextVNode,
     resolvers: {

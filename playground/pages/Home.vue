@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref, VNode } from "vue";
+import { onMounted, ref } from "vue";
 import {
   useStoryblokBridge,
   useStoryblokApi,
   SbRichText,
-  SbRichTextNode,
+  SbRichTextDocumentNode,
   BlockTypes,
 } from "@storyblok/vue";
 
@@ -22,7 +22,7 @@ onMounted(() => {
   useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
 });
 
-const doc: SbRichTextNode<VNode> = {
+const doc: SbRichTextDocumentNode = {
   [BlockTypes.DOCUMENT]: "doc",
   content: [
     {

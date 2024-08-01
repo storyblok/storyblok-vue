@@ -16,24 +16,22 @@ import type {
 } from "./types";
 
 export {
+  useStoryblokBridge,
+  apiPlugin,
+  renderRichText,
+  RichTextSchema,
+  RichTextResolver,
   BlockTypes,
   MarkTypes,
   richTextResolver,
   TextTypes,
+  type SbRichTextDocumentNode,
   type SbRichTextNodeTypes,
   type SbRichTextNode,
   type SbRichTextOptions,
   type SbRichTextResolvers,
   type SbRichTextNodeResolver,
   type SbRichTextImageOptimizationOptions,
-} from "@storyblok/richtext";
-
-export {
-  useStoryblokBridge,
-  apiPlugin,
-  renderRichText,
-  RichTextSchema,
-  RichTextResolver,
 } from "@storyblok/js";
 
 import StoryblokComponent from "./StoryblokComponent.vue";
