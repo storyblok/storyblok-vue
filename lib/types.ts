@@ -3,7 +3,7 @@ import type StoryblokComponent from "./StoryblokComponent.vue";
 import type {
   SbRichTextDocumentNode,
   SbRichTextResolvers,
-} from "@storyblok/richtext";
+} from "@storyblok/js";
 import type { VNode } from "vue";
 
 declare module "@vue/runtime-core" {
