@@ -3,9 +3,7 @@ import { onMounted, ref } from "vue";
 import {
   useStoryblokBridge,
   useStoryblokApi,
-  SbRichText,
-  SbRichTextDocumentNode,
-  BlockTypes,
+  StoryblokRichText,
 } from "@storyblok/vue";
 
 const version = import.meta.env.MODE === "production" ? "published" : "draft";
@@ -17,13 +15,13 @@ const { data } = await storyblokApi.get("cdn/stories/vue", {
 
 const story = ref(null);
 story.value = data.story;
-
+console.log(story.value);
 onMounted(() => {
   useStoryblokBridge(story.value.id, (evStory) => (story.value = evStory));
 });
 
-const doc: SbRichTextDocumentNode = {
-  [BlockTypes.DOCUMENT]: "doc",
+/* const doc = {
+  type: "doc",
   content: [
     {
       type: "bullet_list",
@@ -76,10 +74,11 @@ const doc: SbRichTextDocumentNode = {
       ],
     },
   ],
-};
+}; */
 </script>
 
 <template>
-  <SbRichText v-if="doc" :doc="doc" />
   <StoryblokComponent v-if="story" :blok="story.content" />
+  <h2>Richtext</h2>
+  <StoryblokRichText v-if="story.content" :doc="story.content.richText" />
 </template>

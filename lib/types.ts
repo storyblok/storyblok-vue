@@ -40,6 +40,12 @@ export type {
   StoryblokBridgeConfigV2,
   StoryblokBridgeV2,
   StoryblokClient,
+  SbRichTextDocumentNode,
+  SbRichTextNodeTypes,
+  SbRichTextNode,
+  SbRichTextResolvers,
+  SbRichTextNodeResolver,
+  SbRichTextImageOptimizationOptions,
 } from "@storyblok/js";
 
 export interface SbVueSDKOptions extends SbSDKOptions {

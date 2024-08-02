@@ -130,25 +130,25 @@ Check the available [apiOptions](https://www.storyblok.com/docs/api/content-deli
 
 ### Rendering Rich Text
 
-You can render rich-text fields by using the `SbRichText` component:
+You can render rich-text fields by using the `StoryblokRichtext` component:
 
 ```html
 <script setup>
-  import { SbRichText } from "@storyblok/vue";
+  import { StoryblokRichtext } from "@storyblok/vue";
 </script>
 
 <template>
-  <SbRichText :doc="blok.articleContent" />
+  <StoryblokRichtext :doc="blok.articleContent" />
 </template>
 ```
 
 #### Overriding the default resolvers
 
-You can override the default resolvers by passing a `resolver` prop to the `SbRichText` component, for example, to use vue-router links or add a custom codeblok component: :
+You can override the default resolvers by passing a `resolver` prop to the `StoryblokRichtext` component, for example, to use vue-router links or add a custom codeblok component: :
 
 ```html
 <script setup>
-  import { SbRichText, BlockTypes } from "@storyblok/vue";
+  import { StoryblokRichtext, BlockTypes } from "@storyblok/vue";
   import { RouterLink } from "vue-router";
   import CodeBlok from "./components/CodeBlok.vue";
 
@@ -175,7 +175,7 @@ You can override the default resolvers by passing a `resolver` prop to the `SbRi
 </script>
 
 <template>
-  <SbRichText :doc="blok.articleContent" :resolvers="resolvers" />
+  <StoryblokRichtext :doc="blok.articleContent" :resolvers="resolvers" />
 </template>
 ```
 
@@ -201,7 +201,7 @@ Or you can have more control by using the `useRichText` composable:
     },
   }
 
-  const { render } = useSbRichText({
+  const { render } = useStoryblokRichtext({
     resolvers,
   })
 
@@ -213,7 +213,7 @@ Or you can have more control by using the `useRichText` composable:
 </template>
 ```
 
-For more incredible options you can pass to the `useSbRichText, please consult the [Full options](https://github.com/storyblok/richtext?tab=readme-ov-file#options) documentation.
+For more incredible options you can pass to the `useStoryblokRichtext, please consult the [Full options](https://github.com/storyblok/richtext?tab=readme-ov-file#options) documentation.
 
 ### Legacy Rich Text Resolver
 

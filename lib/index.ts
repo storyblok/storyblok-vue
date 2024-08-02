@@ -25,21 +25,14 @@ export {
   MarkTypes,
   richTextResolver,
   TextTypes,
-  type SbRichTextDocumentNode,
-  type SbRichTextNodeTypes,
-  type SbRichTextNode,
-  type SbRichTextOptions,
-  type SbRichTextResolvers,
-  type SbRichTextNodeResolver,
-  type SbRichTextImageOptimizationOptions,
 } from "@storyblok/js";
 
 import StoryblokComponent from "./StoryblokComponent.vue";
 export { default as StoryblokComponent } from "./StoryblokComponent.vue";
-import SbRichText from "./components/SbRichText.vue";
-export { default as SbRichText } from "./components/SbRichText.vue";
+import StoryblokRichText from "./components/StoryblokRichText.vue";
+export { default as StoryblokRichText } from "./components/StoryblokRichText.vue";
 
-export * from "./composables/useRichText";
+export * from "./composables/useStoryblokRichText";
 
 const vEditableDirective: Directive<HTMLElement> = {
   beforeMount(el, binding) {
@@ -104,7 +97,7 @@ export const StoryblokVue: Plugin = {
   install(app, pluginOptions: SbVueSDKOptions = {}) {
     app.directive("editable", vEditableDirective);
     app.component("StoryblokComponent", StoryblokComponent);
-    app.component("SbRichText", SbRichText);
+    app.component("StoryblokRichText", StoryblokRichText);
     if (
       pluginOptions.enableFallbackComponent &&
       !pluginOptions.customFallbackComponent

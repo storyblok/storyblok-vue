@@ -21,7 +21,7 @@ const componentResolver: SbRichTextNodeResolver<VNode> = (
   );
 };
 
-export function useSbRichText(options: newSbRichTextOptions<VNode>) {
+export function useStoryblokRichText(options: newSbRichTextOptions<VNode>) {
   const mergedOptions: newSbRichTextOptions<VNode> = {
     renderFn: h,
     textFn: createTextVNode,
