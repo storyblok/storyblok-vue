@@ -1,5 +1,5 @@
 <script setup>
-import Home from "./pages/HomeShort.vue";
+import Home from "./pages/Home.vue";
 </script>
 
 <template>

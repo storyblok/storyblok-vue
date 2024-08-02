@@ -130,6 +130,96 @@ Check the available [apiOptions](https://www.storyblok.com/docs/api/content-deli
 
 ### Rendering Rich Text
 
+You can render rich-text fields by using the `StoryblokRichtext` component:
+
+```html
+<script setup>
+  import { StoryblokRichtext } from "@storyblok/vue";
+</script>
+
+<template>
+  <StoryblokRichtext :doc="blok.articleContent" />
+</template>
+```
+
+#### Overriding the default resolvers
+
+You can override the default resolvers by passing a `resolver` prop to the `StoryblokRichtext` component, for example, to use vue-router links or add a custom codeblok component: :
+
+```html
+<script setup>
+  import { StoryblokRichtext, BlockTypes } from "@storyblok/vue";
+  import { RouterLink } from "vue-router";
+  import CodeBlok from "./components/CodeBlok.vue";
+
+  const resolvers = {
+    // RouterLink example:
+    [MarkTypes.LINK]: (node: Node<VNode>) => {
+      return node.attrs?.linktype === 'STORY'
+        ? h(RouterLink, {
+          to: node.attrs?.href,
+          target: node.attrs?.target,
+        }, node.text)
+        : h('a', {
+          href: node.attrs?.href,
+          target: node.attrs?.target,
+        }, node.text)
+    },
+    // Custom code block component example:
+    [BlockTypes.CODE_BLOCK]: (node: Node) => {
+      return h(CodeBlock, {
+        class: node?.attrs?.class,
+      }, node.children)
+    },
+  }
+</script>
+
+<template>
+  <StoryblokRichtext :doc="blok.articleContent" :resolvers="resolvers" />
+</template>
+```
+
+Or you can have more control by using the `useRichText` composable:
+
+```html
+<script setup>
+  import { useRichText } from "@storyblok/vue";
+  import { RouterLink } from "vue-router";
+
+  const resolvers = {
+    // RouterLink example:
+    [MarkTypes.LINK]: (node: Node<VNode>) => {
+      return node.attrs?.linktype === 'STORY'
+        ? h(RouterLink, {
+          to: node.attrs?.href,
+          target: node.attrs?.target,
+        }, node.text)
+        : h('a', {
+          href: node.attrs?.href,
+          target: node.attrs?.target,
+        }, node.text)
+    },
+  }
+
+  const { render } = useStoryblokRichtext({
+    resolvers,
+  })
+
+  const html = render(blok.articleContent);
+</script>
+
+<template>
+  <div v-html="html"></div>
+</template>
+```
+
+For more incredible options you can pass to the `useStoryblokRichtext, please consult the [Full options](https://github.com/storyblok/richtext?tab=readme-ov-file#options) documentation.
+
+### Legacy Rich Text Resolver
+
+> [!WARNING]  
+> The legacy `richTextResolver` is soon to be deprecated. We recommend migrating to the new `useRichText` composable described above instead.
+
 You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
 
 ```html
