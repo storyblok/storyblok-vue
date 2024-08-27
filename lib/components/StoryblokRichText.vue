@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { VNode } from "vue";
-import type { SbRichTextNode } from "@storyblok/js";
+import type { StoryblokRichTextNode } from "@storyblok/js";
 import { useStoryblokRichText } from "../composables/useStoryblokRichText";
-import type { SbRichTextProps } from "../types";
+import type { StoryblokRichTextProps } from "../types";
 
-const props = defineProps<SbRichTextProps>();
+const props = defineProps<StoryblokRichTextProps>();
 
 const { render } = useStoryblokRichText({
   resolvers: props.resolvers ?? {},
 });
 
-const root = () => render(props.doc as SbRichTextNode<VNode>);
+const root = () => render(props.doc as StoryblokRichTextNode<VNode>);
 </script>
 
 <template>

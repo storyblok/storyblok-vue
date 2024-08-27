@@ -1,15 +1,15 @@
 import type { VNode } from "vue";
 import { createTextVNode, h } from "vue";
 import type {
-  SbRichTextNode,
-  SbRichTextNodeResolver,
-  newSbRichTextOptions,
+  StoryblokRichTextNode,
+  StoryblokRichTextNodeResolver,
+  StoryblokRichTextOptions,
 } from "@storyblok/js";
 import { BlockTypes, richTextResolver } from "@storyblok/js";
 import StoryblokComponent from "../StoryblokComponent.vue";
 
-const componentResolver: SbRichTextNodeResolver<VNode> = (
-  node: SbRichTextNode<VNode>
+const componentResolver: StoryblokRichTextNodeResolver<VNode> = (
+  node: StoryblokRichTextNode<VNode>
 ): VNode => {
   return h(
     StoryblokComponent,
@@ -21,8 +21,8 @@ const componentResolver: SbRichTextNodeResolver<VNode> = (
   );
 };
 
-export function useStoryblokRichText(options: newSbRichTextOptions<VNode>) {
-  const mergedOptions: newSbRichTextOptions<VNode> = {
+export function useStoryblokRichText(options: StoryblokRichTextOptions<VNode>) {
+  const mergedOptions: StoryblokRichTextOptions<VNode> = {
     renderFn: h,
     textFn: createTextVNode,
     resolvers: {

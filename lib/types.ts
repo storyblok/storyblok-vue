@@ -1,8 +1,8 @@
 import type { SbBlokData, SbSDKOptions } from "@storyblok/js";
 import type StoryblokComponent from "./StoryblokComponent.vue";
 import type {
-  SbRichTextDocumentNode,
-  SbRichTextResolvers,
+  StoryblokRichTextDocumentNode,
+  StoryblokRichTextResolvers,
 } from "@storyblok/js";
 import type { VNode } from "vue";
 
@@ -33,19 +33,19 @@ export type {
   ISbAlternateObject,
   ISbStoriesParams,
   ISbStoryParams,
-  ISbRichtext,
+  IStoryblokRichtext,
   SbBlokData,
   SbBlokKeyDataTypes,
   SbSDKOptions,
   StoryblokBridgeConfigV2,
   StoryblokBridgeV2,
   StoryblokClient,
-  SbRichTextDocumentNode,
-  SbRichTextNodeTypes,
-  SbRichTextNode,
-  SbRichTextResolvers,
-  SbRichTextNodeResolver,
-  SbRichTextImageOptimizationOptions,
+  StoryblokRichTextDocumentNode,
+  StoryblokRichTextNodeTypes,
+  StoryblokRichTextNode,
+  StoryblokRichTextResolvers,
+  StoryblokRichTextNodeResolver,
+  StoryblokRichTextImageOptimizationOptions,
 } from "@storyblok/js";
 
 export interface SbVueSDKOptions extends SbSDKOptions {
@@ -63,7 +63,7 @@ export interface SbComponentProps {
   blok: SbBlokData;
 }
 
-export interface SbRichTextProps {
-  doc: SbRichTextDocumentNode;
-  resolvers?: SbRichTextResolvers<VNode>;
+export interface StoryblokRichTextProps {
+  doc: StoryblokRichTextDocumentNode;
+  resolvers?: StoryblokRichTextResolvers<VNode>;
 }
