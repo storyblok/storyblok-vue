@@ -148,7 +148,8 @@ You can override the default resolvers by passing a `resolver` prop to the `Stor
 
 ```html
 <script setup>
-  import { StoryblokRichText, BlockTypes, StoryblokRichTextNode } from "@storyblok/vue";
+  import { type VNode, h } from "vue";
+  import { StoryblokRichText, BlockTypes, MarkTypes, type StoryblokRichTextNode } from "@storyblok/vue";
   import { RouterLink } from "vue-router";
   import CodeBlok from "./components/CodeBlok.vue";
 
@@ -183,12 +184,13 @@ Or you can have more control by using the `useStoryblokRichText` composable:
 
 ```html
 <script setup>
-  import { useStoryblokRichText } from "@storyblok/vue";
+   import { type VNode, h } from "vue";
+  import { useStoryblokRichText, BlockTypes, MarkTypes, type StoryblokRichTextNode } from "@storyblok/vue";
   import { RouterLink } from "vue-router";
 
   const resolvers = {
     // RouterLink example:
-    [MarkTypes.LINK]: (node: Node<VNode>) => {
+    [MarkTypes.LINK]: (node: StoryblokRichTextNode<VNode>) => {
       return node.attrs?.linktype === 'STORY'
         ? h(RouterLink, {
           to: node.attrs?.href,
