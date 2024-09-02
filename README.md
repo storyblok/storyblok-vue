@@ -144,11 +144,11 @@ You can render rich-text fields by using the `StoryblokRichtext` component:
 
 #### Overriding the default resolvers
 
-You can override the default resolvers by passing a `resolver` prop to the `StoryblokRichtext` component, for example, to use vue-router links or add a custom codeblok component: :
+You can override the default resolvers by passing a `resolver` prop to the `StoryblokRichText` component, for example, to use vue-router links or add a custom codeblok component: :
 
 ```html
 <script setup>
-  import { StoryblokRichtext, BlockTypes } from "@storyblok/vue";
+  import { StoryblokRichText, BlockTypes } from "@storyblok/vue";
   import { RouterLink } from "vue-router";
   import CodeBlok from "./components/CodeBlok.vue";
 
@@ -175,15 +175,15 @@ You can override the default resolvers by passing a `resolver` prop to the `Stor
 </script>
 
 <template>
-  <StoryblokRichtext :doc="blok.articleContent" :resolvers="resolvers" />
+  <StoryblokRichText :doc="blok.articleContent" :resolvers="resolvers" />
 </template>
 ```
 
-Or you can have more control by using the `useRichText` composable:
+Or you can have more control by using the `useStoryblokRichText` composable:
 
 ```html
 <script setup>
-  import { useRichText } from "@storyblok/vue";
+  import { useStoryblokRichText } from "@storyblok/vue";
   import { RouterLink } from "vue-router";
 
   const resolvers = {
@@ -201,7 +201,7 @@ Or you can have more control by using the `useRichText` composable:
     },
   }
 
-  const { render } = useStoryblokRichtext({
+  const { render } = useStoryblokRichText({
     resolvers,
   })
 

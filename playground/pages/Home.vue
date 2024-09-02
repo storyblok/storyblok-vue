@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import {
-  useStoryblokBridge,
-  useStoryblokApi,
-  StoryblokRichText,
-} from "@storyblok/vue";
+import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
 
 const version = import.meta.env.MODE === "production" ? "published" : "draft";
 
@@ -80,5 +76,4 @@ onMounted(() => {
 <template>
   <StoryblokComponent v-if="story" :blok="story.content" />
   <h2>Richtext</h2>
-  <StoryblokRichText v-if="story.content" :doc="story.content.richText" />
 </template>

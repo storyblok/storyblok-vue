@@ -33,7 +33,6 @@ export type {
   ISbAlternateObject,
   ISbStoriesParams,
   ISbStoryParams,
-  IStoryblokRichtext,
   SbBlokData,
   SbBlokKeyDataTypes,
   SbSDKOptions,

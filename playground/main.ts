@@ -6,6 +6,8 @@ import Teaser from "./components/Teaser.vue";
 import Grid from "./components/Grid.vue";
 import Feature from "./components/Feature.vue";
 // import MyCustomFallback from "./components/MyCustomFallback.vue";
+import { router } from "./router";
+import IframeEmbed from "./components/IFrameEmbed.vue";
 
 const app = createApp(App);
 
@@ -17,11 +19,11 @@ app.use(StoryblokVue, {
   // enableFallbackComponent: true,
   // customFallbackComponent: "MyCustomFallback"
 });
-
 app.component("Page", Page);
 app.component("Teaser", Teaser); // Comment to check fallback behavior
 app.component("Grid", Grid);
 app.component("Feature", Feature);
+app.component("IframeEmbed", IframeEmbed);
 // app.component("MyCustomFallback", MyCustomFallback)
-
+app.use(router);
 app.mount("#app");
