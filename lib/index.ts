@@ -25,6 +25,13 @@ export {
   MarkTypes,
   richTextResolver,
   TextTypes,
+  type StoryblokRichTextOptions,
+  type StoryblokRichTextDocumentNode,
+  type StoryblokRichTextNodeTypes,
+  type StoryblokRichTextNode,
+  type StoryblokRichTextResolvers,
+  type StoryblokRichTextNodeResolver,
+  type StoryblokRichTextImageOptimizationOptions,
 } from "@storyblok/js";
 
 import StoryblokComponent from "./StoryblokComponent.vue";
