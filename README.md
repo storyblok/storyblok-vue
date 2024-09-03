@@ -30,28 +30,24 @@
   </a>
 </p>
 
-> **Note**
-> This plugin is for Vue 3. [Check out the docs for Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
-
-## Kickstart a new project
-Are you eager to dive into coding? **[Follow these steps to kickstart a new project with Storyblok and Vue](https://www.storyblok.com/technologies#vue?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)**, and get started in just a few minutes!
-
 ## 5-minute Tutorial
 Are you looking for a hands-on, step-by-step tutorial? The **[Vue 5-minute Tutorial](https://www.storyblok.com/tp/add-a-headless-CMS-to-vuejs-in-5-minutes?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)** has you covered! It provides comprehensive instructions on how to set up a Storyblok space and connect it to your Vue project.
 
 ## Installation
 
-Install `@storyblok/vue`
+Install `@storyblok/vue`:
 
 ```bash
 npm install @storyblok/vue
 # yarn add @storyblok/vue
 ```
 
-> **Warning**
+> [!NOTE]
+> This plugin is for Vue 3. See the [Vue 2 version](https://github.com/storyblok/storyblok-vue-2).
+>
 > This SDK uses the Fetch API under the hood. If your environment doesn't support it, you need to install a polyfill like [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch). More info on [storyblok-js-client docs](https://github.com/storyblok/storyblok-js-client#fetch-use-polyfill-if-needed---version-5).
 
-Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
+Register the plugin in your application (usually in `main.js`), add the `apiPlugin`, and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) for your Storyblok space:
 
 ```js
 import { createApp } from "vue";
@@ -66,32 +62,25 @@ app.use(StoryblokVue, {
 });
 ```
 
-That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
+> [!TIP]
+> To install the file from the CDN and access the methods via `window.storyblokVue`:
+>
+> ```html
+> <script src="https://unpkg.com/@storyblok/vue"></script>
+> ```
 
-> **Note**
-> You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section.
-
-#### From a CDN
-
-Install the file from the CDN and access the methods via `window.storyblokVue`:
-
-```html
-<script src="https://unpkg.com/@storyblok/vue"></script>
-```
-
-## Getting started
-
-`@storyblok/vue` does three actions when you initialize it:
+`@storyblok/vue` performs three actions when you initialize it:
 
 - Provides a `storyblokApi` object in your app, which is an instance of [storyblok-js-client](https://github.com/storyblok/storyblok-js-client)
 - Loads [Storyblok Bridge](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) for real-time visual updates
 - Provides a `v-editable` directive to link editable components to the Storyblok Visual Editor
 
-### Short Form
+Finally, load components in your app to render your Storyblok content:
 
-Load globally the Vue components you want to link to Storyblok in your _main.js_ file:
 
 ```js
+// main.js
+
 import Page from "./components/Page.vue";
 import Teaser from "./components/Teaser.vue";
 
@@ -104,10 +93,86 @@ app.component("Page", Page);
 app.component("Teaser", Teaser);
 ```
 
-The simplest way is by using the `useStoryblok` one-liner composable. Where you need to pass as first parameter the `slug`, while the second and third parameters, `apiOptions` and `bridgeOptions` respectively, are optional:
+For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
 
-> **Note**
-> The `resolveRelations` and `resolveLinks` from `bridgeOptions` can be excluded if you're already defining them as `resolve_relations` and `resolve_links` in `apiOptions`, we will add them by default. But you will always be able to overwrite them.
+```html
+<script setup>
+defineProps({ blok: Object });
+</script>
+
+<template>
+  <div v-editable="blok">
+    <!-- ... -->
+  </div>
+</template>
+
+```
+
+Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
+
+Check out the [playground](/../../tree/next/playground) for a full example.
+
+## Exports
+
+### `StoryblokVue`
+
+> [!CAUTION]
+> EXPLAIN THIS EXPORT, INCLUDING CONFIGURATION OPTIONS.
+
+Configuration options:
+- accessToken
+- apiOptions
+- richText
+- use
+- bridge
+- enableFallbackComponent
+- customFallbackComponent
+
+> [!IMPORTANT]
+> For spaces created in the United States or China, the `apiOptions.region` parameter **must** be specified.
+
+You can conditionally load the Storyblok Bridge by using the `bridge` option. This can be useful if you want to disable it in production:
+
+```js
+app.use(StoryblokVue, {
+  bridge: process.env.NODE_ENV !== "production",
+});
+```
+
+By default, `@storyblok/vue` shows a `console.error` if a component is not implemented. Setting `enableFallbackComponent` to `true` bypasses that behavior, rendering a fallback component in the frontend instead.
+
+```js
+app.use(StoryblokVue, {
+  // ...
+  enableFallbackComponent: true,
+});
+```
+
+You can also create and use a custom fallback component by setting `customFallbackComponent: "MyCustomFallback"`.
+
+```js
+import MyCustomFallback from "./components/MyCustomFallback.vue";
+
+app.use(StoryblokVue, {
+  // ...
+  enableFallbackComponent: true,
+  customFallbackComponent: "MyCustomFallback",
+});
+
+app.component("MyCustomFallback", MyCustomFallback);
+```
+
+### `apiPlugin`
+
+> [!CAUTION]
+> EXPLAIN THIS EXPORT
+
+If you prefer to use your own fetch method, just remove the `apiPlugin` and `storyblok-js-client` won't be added to your application.
+
+
+### `useStoryblok(pathToStory, apiOptions = {}, bridgeOptions = {})`
+
+To render a page, use the `useStoryblok` one-liner composable. Pass the `slug` as the first parameter, while the second and third parameters, `apiOptions` and `bridgeOptions` respectively, are optional:
 
 ```html
 <script setup>
@@ -124,167 +189,38 @@ The simplest way is by using the `useStoryblok` one-liner composable. Where you 
 </template>
 ```
 
-Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
+This is equivalent to using `useStoryblokBridge` and `useStoryblokApi`.
 
-### Rendering Rich Text
+> [!NOTE]
+> The `resolveRelations` and `resolveLinks` from `bridgeOptions` can be excluded if you're already defining them as `resolve_relations` and `resolve_links` in `apiOptions`.
 
-You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
+See the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
 
-```html
-<template>
-  <div v-html="articleContent"></div>
-</template>
+> [!CAUTION]
+>  INCLUDE PARAMETERS FOR ALL FUNCTION DEFINITIONS
 
-<script setup>
-  import { computed } from "vue";
-  import { renderRichText } from "@storyblok/vue";
+### useStoryblokApi(.....)
 
-  const articleContent = computed(() => renderRichText(blok.articleContent));
-</script>
-```
-
-You can set a **custom Schema and component resolver globally** at init time by using the `richText` init option:
-
-```js
-import { RichTextSchema, StoryblokVue } from "@storyblok/vue";
-import cloneDeep from "clone-deep";
-
-const mySchema = cloneDeep(RichTextSchema); // you can make a copy of the default RichTextSchema
-// ... and edit the nodes and marks, or add your own.
-// Check the base RichTextSchema source here https://github.com/storyblok/storyblok-js-client/blob/master/source/schema.js
-
-app.use(StoryblokVue, {
-  accessToken: "YOUR_ACCESS_TOKEN",
-  use: [apiPlugin],
-  richText: {
-    schema: mySchema,
-    resolver: (component, blok) => {
-      switch (component) {
-        case "my-custom-component":
-          return `<div class="my-component-class">${blok.text}</div>`;
-        default:
-          return "Resolver not defined";
-      }
-    },
-  },
-});
-```
-
-You can also set a **custom Schema and component resolver only once** by passing the options as the second parameter to `renderRichText` function:
-
-```js
-import { renderRichText } from "@storyblok/vue";
-
-renderRichText(blok.richTextField, {
-  schema: mySchema,
-  resolver: (component, blok) => {
-    switch (component) {
-      case "my-custom-component":
-        return `<div class="my-component-class">${blok.text}</div>`;
-        break;
-      default:
-        return `Component ${component} not found`;
-    }
-  },
-});
-```
-
-### Long Form
-
-#### 1. Fetching Content
-
-Inject `storyblokApi` when using Composition API:
-
-```html
-<template>
-  <div>
-    <p v-for="story in stories" :key="story.id">{{ story.name }}</p>
-  </div>
-</template>
-
-<script setup>
-  import { useStoryblokApi } from "@storyblok/vue";
-
-  const storyblokApi = useStoryblokApi();
-  const { data } = await storyblokApi.get(
-    "cdn/stories/home",
-    { version: "draft", resolve_relations: "Article.author" } // API Options
-  );
-</script>
-```
-
-> **Note**
-> You can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
-
-#### 2. Listen to Storyblok Visual Editor events
-
-Use `useStoryBridge` to get the new story every time is triggered a `change` event from the Visual Editor. You need to pass the story id as first param, and a callback function as second param to update the new story:
+> [!CAUTION]
+> EXPLAIN THIS FUNCTION
 
 ```html
 <script setup>
   import { onMounted } from "vue";
-  import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
+  import { useStoryblokApi } from "@storyblok/vue";
 
   const storyblokApi = useStoryblokApi();
   const { data } = await storyblokApi.get(
-    "cdn/stories/home",
-    { version: "draft", resolve_relations: "Article.author" } // API Options
-  );
-  const state = reactive({ story: data.story });
-
-  onMounted(() => {
-    useStoryblokBridge(state.story.id, story => (state.story = story));
-  });
-</script>
-```
-
-You can pass [Bridge options](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) as a third parameter as well:
-
-```js
-useStoryblokBridge(
-  state.story.id,
-  (story) => (state.story = story),
-  {
-    resolveRelations: ["Article.author"],
-    resolveLinks: "url",
-  } // Bridge Options
-);
-```
-
-#### 3. Link your components to Storyblok Visual Editor
-
-For every component you've defined in your Storyblok space, add the `v-editable` directive with the blok content:
-
-```html
-<template>
-  <div v-editable="blok"><!-- ... --></div>
-</template>
-```
-
-Where `blok` is the actual blok data coming from [Storblok's Content Delivery API](https://www.storyblok.com/docs/api/content-delivery?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
-
-Check out the [playground](/../../tree/next/playground) for a full example.
-
-## Features and API
-
-You can **choose the features to use** when you initialize the plugin. In that way, you can improve Web Performance by optimizing your page load and save some bytes.
-
-### useStoryblok(pathToStory, apiOptions = {}, bridgeOptions = {})
-
-This example of `useStoryblok`:
-
-```html
-<script setup>
-  import { useStoryblok } from "@storyblok/vue";
-  const story = await useStoryblok(
-    "blog",
+    "cdn/stories/blog",
     { version: "draft", resolve_relations: "Article.author" }, // API Options
-    { resolveRelations: ["Article.author"], resolveLinks: "url" } // Bridge Options
   );
 </script>
 ```
 
-Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`:
+### useStoryblokBridge(......)
+
+> [!CAUTION]
+> EXPLAIN THIS FUNCTION
 
 ```html
 <script setup>
@@ -308,64 +244,6 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
 </script>
 ```
 
-Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to `storyblok-js-client`) and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to the Storyblok Bridge).
-
-### Storyblok API
-
-You can use an `apiOptions` object. This is passed down to the [storyblok-js-client config object](https://github.com/storyblok/storyblok-js-client#class-storyblok).
-
-```js
-app.use(StoryblokVue, {
-  accessToken: "<your-token>",
-  apiOptions: {
-    // storyblok-js-client config object
-    cache: { type: "memory" },
-  },
-  use: [apiPlugin],
-});
-```
-
-If you prefer to use your own fetch method, just remove the `apiPlugin` and `storyblok-js-client` won't be added to your application.
-
-```js
-app.use(StoryblokVue);
-```
-
-## Region parameter
-
-Possible values:
-
-- `eu` (default): For spaces created in the EU
-- `us`: For spaces created in the US
-- `ap`: For spaces created in Australia
-- `ca`: For spaces created in Canada
-- `cn`: For spaces created in China
-
-Full example for a space created in the US:
-
-```js
-app.use(StoryblokVue, {
-  accessToken: "<your-token>",
-  use: [apiPlugin],
-  apiOptions: {
-    region: "us",
-  },
-});
-```
-
-> **Important**
-> For spaces created in the United States or China, the `region` parameter **must** be specified.
-
-## Storyblok Bridge
-
-You can conditionally load it by using the `bridge` option. Very useful if you want to disable it in production:
-
-```js
-app.use(StoryblokVue, {
-  bridge: process.env.NODE_ENV !== "production",
-});
-```
-
 In case you need it, you have still access to the raw `window.StoryblokBridge`:
 
 ```js
@@ -376,34 +254,128 @@ sbBridge.on(["input", "published", "change"], (event) => {
 });
 ```
 
-## Using Fallback components
+### `renderRichText(.....)`
 
-By default, `@storyblok/vue` show a `console.error` if a component is not implemented. Setting `enableFallbackComponent` to `true` bypasses that behavior, rendering a fallback component in the frontend instead.
+You can render rich text using the `renderRichText` function that comes with `@storyblok/vue` along with a Vue computed property:
+
+```html
+<template>
+  <div v-html="articleContent"></div>
+</template>
+
+<script setup>
+  import { computed } from "vue";
+  import { renderRichText } from "@storyblok/vue";
+
+  const articleContent = computed(() => renderRichText(blok.articleContent));
+</script>
+```
+
+You can set a custom schema and component resolver globally at init time by using the `richText` init option:
 
 ```js
+import { RichTextSchema, StoryblokVue } from "@storyblok/vue";
+import cloneDeep from "clone-deep";
+
+const mySchema = cloneDeep(RichTextSchema); // Make a copy of the default RichTextSchema
+// ... and edit the nodes and marks, or add your own.
+// Check the base RichTextSchema source here https://github.com/storyblok/storyblok-js-client/blob/master/source/schema.js
+
 app.use(StoryblokVue, {
-  // ...
-  enableFallbackComponent: true,
+  accessToken: "YOUR_ACCESS_TOKEN",
+  use: [apiPlugin],
+  richText: {
+    schema: mySchema,
+    resolver: (component, blok) => {
+      switch (component) {
+        case "my-custom-component":
+          return `<div class="my-component-class">${blok.text}</div>`;
+        default:
+          return "Resolver not defined";
+      }
+    },
+  },
 });
 ```
 
-You can also create and use a custom fallback component by setting `customFallbackComponent: "MyCustomFallback"`.
+You can also set a custom schema and component resolver for a specific instance by passing the options as the second parameter to `renderRichText` function:
 
 ```js
-import MyCustomFallback from "./components/MyCustomFallback.vue";
+import { renderRichText } from "@storyblok/vue";
 
-app.use(StoryblokVue, {
-  // ...
-  enableFallbackComponent: true,
-  customFallbackComponent: "MyCustomFallback",
+renderRichText(blok.richTextField, {
+  schema: mySchema,
+  resolver: (component, blok) => {
+    switch (component) {
+      case "my-custom-component":
+        return `<div class="my-component-class">${blok.text}</div>`;
+        break;
+      default:
+        return `Component ${component} not found`;
+    }
+  },
 });
-
-app.component("MyCustomFallback", MyCustomFallback);
 ```
 
-## Compatibility
+### `useStoryblokApi(......)` 
 
-This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md). In short: all modern browsers, dropping IE support.
+Inject `storyblokApi` when using Composition API:
+
+```html
+<template>
+  <div>
+    <p v-for="story in stories" :key="story.id">{{ story.name }}</p>
+  </div>
+</template>
+
+<script setup>
+  import { useStoryblokApi } from "@storyblok/vue";
+
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get(
+    "cdn/stories/home",
+    { version: "draft", resolve_relations: "Article.author" } // API Options
+  );
+</script>
+```
+
+> [!NOTE]
+> You can skip using `apiPlugin` if you prefer your own method or function to fetch your data.
+
+### `useStoryblokBridge(......)`
+
+Use `useStoryblokBridge` to get the update data every time a `change` event is triggered from the Visual Editor. Pass the story `id` as the first param, and a callback function as the second param:
+
+```html
+<script setup>
+  import { onMounted } from "vue";
+  import { useStoryblokBridge, useStoryblokApi } from "@storyblok/vue";
+
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get(
+    "cdn/stories/home",
+    { version: "draft", resolve_relations: "Article.author" } // API Options
+  );
+  const state = reactive({ story: data.story });
+
+  onMounted(() => {
+    useStoryblokBridge(state.story.id, story => (state.story = story));
+  });
+</script>
+```
+
+You can pass [bridge options](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) as a third parameter as well:
+
+```js
+useStoryblokBridge(
+  state.story.id,
+  (story) => (state.story = story),
+  {
+    resolveRelations: ["Article.author"],
+    resolveLinks: "url",
+  } // Bridge Options
+);
+```
 
 ## The Storyblok JavaScript SDK Ecosystem
 
