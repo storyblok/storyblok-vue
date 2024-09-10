@@ -1,11 +1,22 @@
-<script setup>
-import Home from "./pages/HomeShort.vue";
+<script setup lang="ts">
+import { watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+
+console.log(router.getRoutes());
+const route = useRoute();
+function setBodyClass(routeName: string) {
+  document.title = `Core Playground - ${routeName}`;
+  document.body.className = routeName;
+}
+watch([route], () => setBodyClass(route.name?.toString() ?? ""));
 </script>
 
 <template>
   <Suspense>
     <template #default>
-      <Home />
+      <RouterView />
     </template>
 
     <template #fallback>

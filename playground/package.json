@@ -2,17 +2,19 @@
   "name": "@storyblok/vue-playground",
   "version": "0.0.0",
   "scripts": {
-    "demo": "vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@storyblok/vue": "^0.0.1",
     "@vitejs/plugin-vue": "^5.0.5",
+    "pathe": "^1.1.2",
     "vite": "^5.4.1",
     "vue": "^3.4.27"
   },
   "dependencies": {
-    "@vitejs/plugin-basic-ssl": "^1.1.0"
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "vue-router": "^4.4.3"
   }
 }
