@@ -130,15 +130,15 @@ Check the available [apiOptions](https://www.storyblok.com/docs/api/content-deli
 
 ### Rendering Rich Text
 
-You can render rich-text fields by using the `StoryblokRichtext` component:
+You can render rich-text fields by using the `StoryblokRichText` component:
 
 ```html
 <script setup>
-  import { StoryblokRichtext } from "@storyblok/vue";
+  import { StoryblokRichText } from "@storyblok/vue";
 </script>
 
 <template>
-  <StoryblokRichtext :doc="blok.articleContent" />
+  <StoryblokRichText :doc="blok.articleContent" />
 </template>
 ```
 
