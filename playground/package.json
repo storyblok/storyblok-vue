@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "@vitejs/plugin-basic-ssl": "^1.1.0",
-    "vue-router": "^4.4.3"
+    "vue-router": "^4.4.5"
   }
 }
