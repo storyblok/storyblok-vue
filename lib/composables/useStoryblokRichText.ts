@@ -25,6 +25,7 @@ export function useStoryblokRichText(options: StoryblokRichTextOptions<VNode>) {
   const mergedOptions: StoryblokRichTextOptions<VNode> = {
     renderFn: h,
     textFn: createTextVNode,
+    keyedResolvers: true,
     resolvers: {
       [BlockTypes.COMPONENT]: componentResolver,
       ...options.resolvers,

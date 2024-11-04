@@ -1,18 +1,32 @@
 <script setup lang="ts">
-import type { VNode } from "vue";
-import type { StoryblokRichTextNode } from "@storyblok/js";
+import { ref, watch, type VNode } from "vue";
+import type {
+  StoryblokRichTextNode,
+  StoryblokRichTextResolvers,
+} from "@storyblok/js";
 import { useStoryblokRichText } from "../composables/useStoryblokRichText";
 import type { StoryblokRichTextProps } from "../types";
 
 const props = defineProps<StoryblokRichTextProps>();
 
-const { render } = useStoryblokRichText({
-  resolvers: props.resolvers ?? {},
-});
+const renderedDoc = ref();
+const root = () => renderedDoc.value;
 
-const root = () => render(props.doc as StoryblokRichTextNode<VNode>);
+watch(
+  [props.doc, props.resolvers],
+  ([doc, resolvers]) => {
+    const { render } = useStoryblokRichText({
+      resolvers: (resolvers as StoryblokRichTextResolvers<VNode>) ?? {},
+    });
+    renderedDoc.value = render(doc as StoryblokRichTextNode<VNode>);
+  },
+  {
+    immediate: true,
+  }
+);
 </script>
 
 <template>
   <root />
 </template>
+ß
