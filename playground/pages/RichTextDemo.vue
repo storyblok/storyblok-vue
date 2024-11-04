@@ -37,6 +37,18 @@ const resolvers = {
         );
   },
 };
+
+setTimeout(() => {
+  story.value.content.richText.content.push({
+    type: "paragraph",
+    content: [
+      {
+        type: "text",
+        text: "This is a new paragraph added after 5 seconds.",
+      },
+    ],
+  });
+}, 5000);
 </script>
 
 <template>
