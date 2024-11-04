@@ -6,10 +6,6 @@ on:
     tags:
       - '!**'
 
-env:
-  PNPM_CACHE_FOLDER: .pnpm-store
-  HUSKY: 0 # Bypass husky commit hook for CI
-
 permissions: {}
 
 concurrency:
@@ -22,14 +18,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - run: corepack enable
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: pnpm
+          node-version: "18"
+          cache: "npm"
       - name: Install dependencies
-        run: pnpm install
+        run: npm ci
       - name: Build
-        run: pnpm build
-      - run: pnpx pkg-pr-new publish --compact --pnpm
+        run: npm build
+      - run: npx pkg-pr-new publish --compact
