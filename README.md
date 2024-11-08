@@ -342,7 +342,7 @@ app.component("MyCustomFallback", MyCustomFallback);
 
 ## Rendering Rich Text
 
-You can render rich-text fields by using the `StoryblokRichText` component:
+You can render rich text fields by using the `StoryblokRichText` component:
 
 ```html
 <script setup>
