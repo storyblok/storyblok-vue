@@ -128,7 +128,7 @@ The simplest way is by using the `useStoryblok` one-liner composable. Where you 
 
 Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
 
-### Rendering Rich Text
+## Rendering Rich Text
 
 You can render rich-text fields by using the `StoryblokRichText` component:
 
@@ -142,7 +142,26 @@ You can render rich-text fields by using the `StoryblokRichText` component:
 </template>
 ```
 
-#### Overriding the default resolvers
+Or you can have more control by using the `useStoryblokRichText` composable:
+
+```html
+<script setup>
+  import { useStoryblokRichText } from "@storyblok/vue";
+  const { render } = useStoryblokRichText({
+    // options like resolvers
+  });
+
+  const root = () => render(blok.articleContent);
+</script>
+
+<template>
+  <root />
+</template>
+```
+
+For more incredible options you can pass to the `useStoryblokRichText`, please consult the [Full options](https://github.com/storyblok/richtext?tab=readme-ov-file#options) documentation.
+
+### Overriding the default resolvers
 
 You can override the default resolvers by passing a `resolver` prop to the `StoryblokRichText` component, for example, to use vue-router links or add a custom codeblok component: :
 
@@ -180,7 +199,7 @@ You can override the default resolvers by passing a `resolver` prop to the `Stor
 </template>
 ```
 
-Or you can have more control by using the `useStoryblokRichText` composable:
+If you want to use the `useStoryblokRichText` composable, you can pass the `resolvers` via the options object:
 
 ```html
 <script setup>
@@ -206,21 +225,18 @@ Or you can have more control by using the `useStoryblokRichText` composable:
   const { render } = useStoryblokRichText({
     resolvers,
   })
-
-  const html = render(blok.articleContent);
+  const root = () => render(blok.articleContent);
 </script>
 
 <template>
-  <div v-html="html"></div>
+  <root />
 </template>
 ```
-
-For more incredible options you can pass to the `useStoryblokRichtext, please consult the [Full options](https://github.com/storyblok/richtext?tab=readme-ov-file#options) documentation.
 
 ### Legacy Rich Text Resolver
 
 > [!WARNING]  
-> The legacy `richTextResolver` is soon to be deprecated. We recommend migrating to the new `useRichText` composable described above instead.
+> The legacy `richTextResolver` is soon to be deprecated. We recommend migrating to the new approach described above instead.
 
 You can easily render rich text by using the `renderRichText` function that comes with `@storyblok/vue` and a Vue computed property:
 
