@@ -38,7 +38,7 @@ jobs:
         run: pnpm build
 
       - name: Cypress run
-        run: pnpm run cy:components
+        run: pnpm run test
 
       - name: Upload Cypress artifacts
         if: failure()
