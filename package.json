@@ -1,76 +1,90 @@
 {
-  "name": "@storyblok/vue-ws",
-  "private": true,
-  "version": "0.0.1",
+  "name": "@storyblok/vue",
+  "type": "module",
+  "version": "8.1.6",
+  "packageManager": "pnpm@9.12.2",
+  "description": "SDK to integrate Storyblok into your project using Vue.",
+  "author": "Storyblok",
   "license": "MIT",
-  "workspaces": [
-    "./lib",
-    "./playground"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storyblok/storyblok-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/storyblok/storyblok-vue/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./rsc": {
+      "types": "./dist/rsc/index.d.ts",
+      "import": "./dist/rsc.mjs",
+      "require": "./dist/rsc.js"
+    }
+  },
+  "main": "./dist/storyblok-vue.js",
+  "module": "./dist/storyblok-vue.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
   ],
-  "types": "./dist/types.index.d.ts",
   "scripts": {
-    "dev": "npm run dev --workspace=lib & npm run demo",
-    "demo": "npm run demo --workspace=playground",
-    "demo-vca": "npm run demo --workspace=playground-vca",
-    "build": "npm run build --workspace=lib",
-    "build:ts": "vite build && tsc --prokect tsconfigjson",
-    "test:unit": "npm run test:unit --workspace=lib",
-    "test:e2e": "npm run test:e2e --workspace=lib",
-    "test:components": "npm run test:components --workspace=lib",
-    "prepare": "husky install",
-    "lint": "eslint ."
+    "dev": "vite build --watch",
+    "playground": "pnpm run --filter ./playground/vue dev",
+    "test": "pnpm run cy:components",
+    "build": "vite build ",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "cy:components": "cypress run-ct"
+  },
+  "peerDependencies": {
+    "vue": ">=3.4"
+  },
+  "dependencies": {
+    "@storyblok/js": "^3.1.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@rollup/plugin-typescript": "^12.1.1",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-vue": "^9.31.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3"
-  },
-  "lint-staged": {
-    "*.{vue,js,css,ts}": [
-      "prettier --write",
-      "eslint"
-    ],
-    "*.md": [
-      "prettier --write"
-    ]
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@storyblok/eslint-config": "^0.3.0",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "cypress": "^13.17.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "kolorist": "^1.8.0",
+    "pathe": "^1.1.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-banner": "^0.8.0",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vue-tsc": "^2.1.10"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
-  "eslintConfig": {
-    "root": true,
-    "parser": "vue-eslint-parser",
-    "env": {
-      "node": true,
-      "vue/setup-compiler-macros": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended",
-      "prettier"
-    ],
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser",
-      "sourceType": "module"
-    },
-    "ignorePatterns": "dist/",
-    "rules": {
-      "vue/multi-word-component-names": 0
-    }
+  "release": {
+    "branches": [
+      "main"
+    ]
   },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": false
+  "publishConfig": {
+    "access": "public"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint",
+    "pre-push": "pnpm commitlint --last --verbose"
   }
 }
