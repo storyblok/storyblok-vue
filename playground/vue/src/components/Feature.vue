@@ -2,7 +2,8 @@
 defineProps({ blok: Object });
 
 function featureMethod() {
-  console.log("Hi from Feature.vue");
+  // eslint-disable-next-line no-console
+  console.log('Hi from Feature.vue');
 }
 
 defineExpose({

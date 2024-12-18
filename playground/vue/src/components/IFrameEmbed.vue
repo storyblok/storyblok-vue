@@ -6,6 +6,7 @@ defineProps({
   },
 });
 </script>
+
 <template>
   <iframe
     :src="blok.url.url"
