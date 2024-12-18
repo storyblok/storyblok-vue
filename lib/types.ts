@@ -6,7 +6,7 @@ import type {
 } from "@storyblok/js";
 import type { VNode } from "vue";
 
-declare module "@vue/runtime-core" {
+declare module "vue" {
   export interface GlobalComponents {
     StoryblokComponent: typeof StoryblokComponent;
   }
