@@ -54,7 +54,7 @@
     "@rollup/plugin-typescript": "^12.1.2",
     "@storyblok/eslint-config": "^0.3.0",
     "@types/node": "^22.10.2",
-    "@typescript-eslint/parser": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.1",
     "@vitejs/plugin-vue": "^5.2.1",
     "cypress": "^13.17.0",
     "eslint": "^9.17.0",
