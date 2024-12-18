@@ -1,10 +1,10 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: "daily"
-      time: "04:00"
+      interval: daily
+      time: '04:00'
     commit-message:
       prefix: fix
       prefix-development: chore
@@ -12,20 +12,20 @@ updates:
     groups:
       linting-dx-tools:
         patterns:
-          - "*lint*" # eslint, eslint-*, vue-eslint-parser, lint-staged, @commitlint/*, @typescript-eslint/*
-          - "prettier"
-          - "husky"
-          - "@vue/tsconfig"
-          - "*babel*" # babel-*, @vue/babel-preset-app, @babel/*
+          - '*lint*' # eslint, eslint-*, vue-eslint-parser, lint-staged, @commitlint/*, @typescript-eslint/*
+          - prettier
+          - husky
+          - '@vue/tsconfig'
+          - '*babel*' # babel-*, @vue/babel-preset-app, @babel/*
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
       testing-tools:
         patterns:
-          - "cypress"
-          - "@cypress/*"
-          - "@vue/test-utils"
-          - "*jest*" # jest, babel-jest, @vue/vue3-jest
+          - cypress
+          - '@cypress/*'
+          - '@vue/test-utils'
+          - '*jest*' # jest, babel-jest, @vue/vue3-jest
         update-types:
-          - "minor"
-          - "patch"
+          - minor
+          - patch
