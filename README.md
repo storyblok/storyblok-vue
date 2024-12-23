@@ -35,7 +35,7 @@
 
 ## Kickstart a new project
 
-Are you eager to dive into coding? **[Follow these steps to kickstart a new project with Storyblok and Vue](https://www.storyblok.com/technologies#vue?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue)**, and get started in just a few minutes!
+Are you eager to dive into coding? **[Follow these steps to kickstart a new project with Storyblok and Vue](https://www.storyblok.com/technologies?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue#vue)**, and get started in just a few minutes!
 
 ## 5-minute Tutorial
 
@@ -53,7 +53,7 @@ npm install @storyblok/vue
 > **Warning**
 > This SDK uses the Fetch API under the hood. If your environment doesn't support it, you need to install a polyfill like [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch). More info on [storyblok-js-client docs](https://github.com/storyblok/storyblok-js-client#fetch-use-polyfill-if-needed---version-5).
 
-Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery#topics/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
+Register the plugin on your application (usually in `main.js`), add the `apiPlugin` and add the [access token](https://www.storyblok.com/docs/api/content-delivery/v2/getting-started/authentication?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) of your Storyblok space:
 
 ```js
 import { createApp } from "vue";
@@ -68,7 +68,7 @@ app.use(StoryblokVue, {
 });
 ```
 
-That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery#topics/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
+That's it! All the features are enabled for you: the _Api Client_ for interacting with [Storyblok CDN API](https://www.storyblok.com/docs/api/content-delivery/v2/getting-started/introduction?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue), and _Storyblok Bridge_ for [real-time visual editing experience](https://www.storyblok.com/docs/guide/essentials/visual-editor?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
 
 > **Note**
 > You can enable/disable some of these features if you don't need them, so you save some KB. Please read the "Features and API" section.
@@ -126,7 +126,7 @@ The simplest way is by using the `useStoryblok` one-liner composable. Where you 
 </template>
 ```
 
-Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
+Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) in our API docs and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) passed to the Storyblok Bridge.
 
 ### Long Form
 
@@ -247,7 +247,7 @@ Is equivalent to the following, using `useStoryblokBridge` and `useStoryblokApi`
 </script>
 ```
 
-Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2#core-resources/stories/retrieve-one-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to `storyblok-js-client`) and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to the Storyblok Bridge).
+Check the available [apiOptions](https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to `storyblok-js-client`) and [bridgeOptions](https://www.storyblok.com/docs/Guides/storyblok-latest-js?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue) (passed to the Storyblok Bridge).
 
 ### Storyblok API
 
@@ -534,5 +534,5 @@ This plugin is for Vue 3. Thus, it supports the [same browsers as Vue 3](https:/
 
 ## Contributing
 
-Please see our [contributing guidelines](https://github.com/storyblok/.github/blob/master/contributing.md) and our [code of conduct](https://www.storyblok.com/trust-center#code-of-conduct?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue).
+Please see our [contributing guidelines](https://github.com/storyblok/.github/blob/master/contributing.md) and our [code of conduct](https://www.storyblok.com/trust-center?utm_source=github.com&utm_medium=readme&utm_campaign=storyblok-vue#code-of-conduct).
 This project use [semantic-release](https://semantic-release.gitbook.io/semantic-release/) for generate new versions by using commit messages and we use the Angular Convention to naming the commits. Check [this question](https://semantic-release.gitbook.io/semantic-release/support/faq#how-can-i-change-the-type-of-commits-that-trigger-a-release) about it in semantic-release FAQ.
