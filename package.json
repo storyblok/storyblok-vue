@@ -46,7 +46,7 @@
     "vue": ">=3.4"
   },
   "dependencies": {
-    "@storyblok/js": "^3.1.9"
+    "@storyblok/js": "3.1.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
