@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@storyblok/js':
-        specifier: ^3.1.9
+        specifier: 3.1.9
         version: 3.1.9
     devDependencies:
       '@commitlint/cli':
@@ -2719,8 +2719,8 @@ packages:
   std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
 
-  storyblok-js-client@6.10.3:
-    resolution: {integrity: sha512-q6YK/f+F8PAJLsKR7jzlTRO9yIUXWLON2Fy02QjywYaSYwyS9ETzIuOtmCSstLrDAP5I+Vnw9PzEU30roxS15g==}
+  storyblok-js-client@6.10.6:
+    resolution: {integrity: sha512-4n/n6tkLu3kmZwb2aSZgwqGta8DodbQbGjuclWY+A6xsmrVWrRBytUs+5lvJVTGkshLflVPhufeO4j/1zvVSPQ==}
 
   string-argv@0.3.2:
     resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
@@ -3790,7 +3790,7 @@ snapshots:
   '@storyblok/js@3.1.9':
     dependencies:
       '@storyblok/richtext': 3.0.2
-      storyblok-js-client: 6.10.3
+      storyblok-js-client: 6.10.6
 
   '@storyblok/richtext@3.0.2': {}
 
@@ -6041,7 +6041,7 @@ snapshots:
 
   std-env@3.8.0: {}
 
-  storyblok-js-client@6.10.3: {}
+  storyblok-js-client@6.10.6: {}
 
   string-argv@0.3.2: {}
 
