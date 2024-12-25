@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@storyblok/js':
-        specifier: 3.1.9
-        version: 3.1.9
+        specifier: 3.2.0
+        version: 3.2.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.6.1
@@ -812,8 +812,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  '@storyblok/js@3.1.9':
-    resolution: {integrity: sha512-N8QB/yn8wQxM+G9kV/RHTsynuTyaMNwiAI2KFiwuT9QPo+Zea4EmikNJY1KxrA1Q8G8YiZEm7OBp1B3QDycA6g==}
+  '@storyblok/js@3.2.0':
+    resolution: {integrity: sha512-4G3zXGeW0Fb+ptdQoauZwA9vlMzRh8uczIGKsi8XbE0ReXKBgtLiNbFkZkknY/gPnPuXTE/YdHuZI7rBpS0RtA==}
 
   '@storyblok/richtext@3.0.2':
     resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
@@ -3787,7 +3787,7 @@ snapshots:
       - typescript
       - vitest
 
-  '@storyblok/js@3.1.9':
+  '@storyblok/js@3.2.0':
     dependencies:
       '@storyblok/richtext': 3.0.2
       storyblok-js-client: 6.10.6
