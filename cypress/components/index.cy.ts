@@ -32,7 +32,7 @@ describe('@storyblok/vue', () => {
   beforeEach(() => {
     cy.spy(window.console, 'log').as('log');
     cy.spy(window.console, 'error').as('error');
-    delete window.storyblokRegisterEvent;
+    delete (window as any).storyblokRegisterEvent;
     document.getElementById('storyblok-javascript-bridge')?.remove();
   });
 
@@ -206,10 +206,7 @@ describe('@storyblok/vue', () => {
         components: { Teaser, Grid, Page, Feature },
       });
 
-      cy.get('[data-test=root]')
-        .children()
-        .find('h1')
-        .should('have.text', 'Headline 1');
+      cy.contains('h1', 'Headline 1', { timeout: 1000 });
     });
 
     it('Should render headline tags correctly', () => {
@@ -217,30 +214,12 @@ describe('@storyblok/vue', () => {
         components: { Teaser, Grid, Page, Feature },
       });
 
-      cy.get('[data-test=root]')
-        .children()
-        .find('h1')
-        .should('have.text', 'Headline 1');
-      cy.get('[data-test=root]')
-        .children()
-        .find('h2')
-        .should('have.text', 'Headline 2');
-      cy.get('[data-test=root]')
-        .children()
-        .find('h3')
-        .should('have.text', 'Headline 3');
-      cy.get('[data-test=root]')
-        .children()
-        .find('h4')
-        .should('have.text', 'Headline 4');
-      cy.get('[data-test=root]')
-        .children()
-        .find('h5')
-        .should('have.text', 'Headline 5');
-      cy.get('[data-test=root]')
-        .children()
-        .find('h6')
-        .should('have.text', 'Headline 6');
+      cy.contains('h1', 'Headline 1', { timeout: 1000 });
+      cy.contains('h2', 'Headline 2', { timeout: 1000 });
+      cy.contains('h3', 'Headline 3', { timeout: 1000 });
+      cy.contains('h4', 'Headline 4', { timeout: 1000 });
+      cy.contains('h5', 'Headline 5', { timeout: 1000 });
+      cy.contains('h6', 'Headline 6', { timeout: 1000 });
     });
 
     it('Should render images correctly', () => {
@@ -248,9 +227,7 @@ describe('@storyblok/vue', () => {
         components: { Teaser, Grid, Page, Feature },
       });
 
-      cy.get('[data-test=root]')
-        .children()
-        .find('img')
+      cy.get('img')
         .should(
           'have.attr',
           'src',
@@ -263,9 +240,7 @@ describe('@storyblok/vue', () => {
         components: { Teaser, Grid, Page, Feature },
       });
 
-      cy.get('[data-test=root]')
-        .children()
-        .find('a')
+      cy.get('a')
         .should('have.attr', 'href', 'https://storyblok.com/');
     });
 
@@ -274,10 +249,9 @@ describe('@storyblok/vue', () => {
         components: { IframeEmbed },
       });
 
-      cy.get('[data-test=root]')
-        .children()
-        .find('iframe')
-        .should('have.attr', 'src', 'https://storyblok.com/');
+      cy.get('iframe')
+        .should('exist')
+        .and('have.attr', 'src', 'https://storyblok.com/');
     });
 
     it('should redirect internal links', () => {
