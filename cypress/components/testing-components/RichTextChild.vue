@@ -1,32 +1,33 @@
 <script setup lang="ts">
 import {
-  useStoryblok,
+  MarkTypes,
   StoryblokRichText,
   type StoryblokRichTextNode,
-  MarkTypes,
-} from "@storyblok/vue";
-import { type VNode, h } from "vue";
-import { RouterLink } from "vue-router";
-const story = await useStoryblok("vue/test-richtext", { version: "draft" });
+  useStoryblok,
+} from '@storyblok/vue';
+import { h, type VNode } from 'vue';
+import { RouterLink } from 'vue-router';
+
+const story = await useStoryblok('vue/test-richtext', { version: 'draft' });
 
 const resolvers = {
   [MarkTypes.LINK]: (node: StoryblokRichTextNode<VNode>) => {
-    return node.attrs?.linktype === "STORY"
+    return node.attrs?.linktype === 'STORY'
       ? h(
           RouterLink,
           {
             to: node.attrs?.href,
             target: node.attrs?.target,
           },
-          node.text
+          node.text,
         )
       : h(
-          "a",
+          'a',
           {
             href: node.attrs?.href,
             target: node.attrs?.target,
           },
-          node.text
+          node.text,
         );
   },
 };

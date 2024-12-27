@@ -15,6 +15,7 @@ const blokProd = {
 const storyblokApi = useStoryblokApi();
 const apiExists = !!(storyblokApi && typeof storyblokApi.get === 'function');
 
+// eslint-disable-next-line no-console
 onMounted(() => useStoryblokBridge(12345, () => console.log('hola')));
 </script>
 
