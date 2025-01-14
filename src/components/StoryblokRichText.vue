@@ -12,13 +12,15 @@ const props = defineProps<StoryblokRichTextProps>();
 const renderedDoc = ref();
 const root = () => renderedDoc.value;
 
-watch(props.doc, (doc) => {
+// Watch both props using an array of getter functions
+watch([() => props.doc, () => props.resolvers], ([doc, resolvers]) => {
   const { render } = useStoryblokRichText({
-    resolvers: (props.resolvers as StoryblokRichTextResolvers<VNode>) ?? {},
+    resolvers: (resolvers as StoryblokRichTextResolvers<VNode>) ?? {},
   });
   renderedDoc.value = render(doc as StoryblokRichTextNode<VNode>);
 }, {
   immediate: true,
+  deep: true,
 });
 </script>
 
