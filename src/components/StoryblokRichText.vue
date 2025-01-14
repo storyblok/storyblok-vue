@@ -12,18 +12,14 @@ const props = defineProps<StoryblokRichTextProps>();
 const renderedDoc = ref();
 const root = () => renderedDoc.value;
 
-watch(
-  [props.doc, props.resolvers],
-  ([doc, resolvers]) => {
-    const { render } = useStoryblokRichText({
-      resolvers: (resolvers as StoryblokRichTextResolvers<VNode>) ?? {},
-    });
-    renderedDoc.value = render(doc as StoryblokRichTextNode<VNode>);
-  },
-  {
-    immediate: true,
-  },
-);
+watch(props.doc, (doc) => {
+  const { render } = useStoryblokRichText({
+    resolvers: (props.resolvers as StoryblokRichTextResolvers<VNode>) ?? {},
+  });
+  renderedDoc.value = render(doc as StoryblokRichTextNode<VNode>);
+}, {
+  immediate: true,
+});
 </script>
 
 <template>
