@@ -1,8 +1,8 @@
 {
   "name": "@storyblok/vue",
   "type": "module",
-  "version": "8.1.6",
-  "packageManager": "pnpm@9.12.2",
+  "version": "8.1.9",
+  "packageManager": "pnpm@10.2.0",
   "description": "SDK to integrate Storyblok into your project using Vue.",
   "author": "Storyblok",
   "license": "MIT",
@@ -29,46 +29,55 @@
   "scripts": {
     "dev": "vite build --watch",
     "playground": "pnpm run --filter ./playground/vue dev",
-    "test": "pnpm run cy:components",
+    "test": "pnpm run test:unit:ci && pnpm run test:e2e",
+    "test:unit": "vitest",
+    "test:unit:ci": "vitest run",
+    "test:unit:ui": "vitest --ui",
+    "test:e2e": "pnpm run cy:components",
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "cy:components": "cypress run-ct"
+    "cy:components": "cypress run-ct",
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "vue": ">=3.4"
   },
   "dependencies": {
-    "@storyblok/js": "3.2.1"
+    "@storyblok/js": "3.2.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@storyblok/eslint-config": "^0.3.0",
-    "@types/node": "^22.10.2",
-    "@typescript-eslint/parser": "^8.18.0",
+    "@types/node": "^22.13.1",
+    "@typescript-eslint/parser": "^8.23.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "cypress": "^13.17.0",
-    "eslint": "^9.17.0",
+    "eslint": "^9.19.0",
     "eslint-plugin-vue": "^9.32.0",
     "kolorist": "^1.8.0",
-    "pathe": "^1.1.2",
-    "typescript": "^5.7.2",
-    "vite": "^6.0.6",
+    "pathe": "^2.0.2",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
     "vite-plugin-banner": "^0.8.0",
-    "vite-plugin-dts": "^4.3.0",
-    "vitest": "^2.1.8",
+    "vite-plugin-dts": "^4.5.0",
+    "vitest": "^3.0.5",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
-    "vue-tsc": "^2.1.10"
+    "vue-tsc": "^2.2.0"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ]
+    ],
+    "rules": {
+      "body-max-line-length": [2, "always", 200]
+    }
   },
   "release": {
     "branches": [

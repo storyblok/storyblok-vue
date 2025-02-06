@@ -9,23 +9,24 @@ updates:
       prefix: fix
       prefix-development: chore
       include: scope
+    labels:
+      - dependabot
     groups:
-      linting-dx-tools:
+      security-updates:
         patterns:
-          - '*lint*' # eslint, eslint-*, vue-eslint-parser, lint-staged, @commitlint/*, @typescript-eslint/*
-          - prettier
-          - husky
-          - '@vue/tsconfig'
-          - '*babel*' # babel-*, @vue/babel-preset-app, @babel/*
+          - '*'
+        exclude-patterns:
+          - 'storyblok*'
         update-types:
-          - minor
           - patch
-      testing-tools:
+          - minor
+      storyblok:
         patterns:
-          - cypress
-          - '@cypress/*'
-          - '@vue/test-utils'
-          - '*jest*' # jest, babel-jest, @vue/vue3-jest
+          - 'storyblok*'
         update-types:
-          - minor
           - patch
+          - minor
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-major
