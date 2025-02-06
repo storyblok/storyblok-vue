@@ -1,5 +1,5 @@
 import vue from '@vitejs/plugin-vue';
-import { defineConfig } from 'vitest/config';
+import { defineConfig, type Plugin } from 'vitest/config';
 import path from 'node:path';
 import { lightGreen } from 'kolorist';
 import banner from 'vite-plugin-banner';
@@ -18,8 +18,8 @@ export default defineConfig({
     vue(),
     banner({
       content: `/**\n * name: ${pkg.name}\n * (c) ${new Date().getFullYear()}\n * description: ${pkg.description}\n * author: ${pkg.author}\n */`,
-    }),
-  ],
+    }) as unknown as Plugin,
+  ] as Plugin[],
 
   build: {
     lib: {
@@ -41,5 +41,11 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ['vue'],
+  },
+
+  test: {
+    globals: true,
+    include: ['./src/__tests__/**/*'],
+    exclude: ['./src/__tests__/cypress', './src/__tests__/testing-components'],
   },
 });
