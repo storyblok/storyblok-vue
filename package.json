@@ -71,6 +71,9 @@
     "vue-router": "^4.5.0",
     "vue-tsc": "^2.2.0"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": ["cypress"]
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
