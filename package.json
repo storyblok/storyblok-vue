@@ -46,7 +46,7 @@
     "vue": ">=3.4"
   },
   "dependencies": {
-    "@storyblok/js": "3.2.3"
+    "@storyblok/js": "3.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
@@ -72,14 +72,20 @@
     "vue-tsc": "^2.2.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["cypress"]
+    "onlyBuiltDependencies": [
+      "cypress"
+    ]
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ],
     "rules": {
-      "body-max-line-length": [2, "always", 200]
+      "body-max-line-length": [
+        2,
+        "always",
+        200
+      ]
     }
   },
   "release": {

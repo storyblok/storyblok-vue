@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@storyblok/js':
-        specifier: 3.2.3
-        version: 3.2.3
+        specifier: 3.3.0
+        version: 3.3.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.7.1
@@ -687,11 +687,11 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  '@storyblok/js@3.2.3':
-    resolution: {integrity: sha512-RRnskb6GCpy2CeVVxQMEwAgbWqG7ehnzCVqbidsR7GpPhcdfdCgsAYDlSnAePwzbpMZXqpW1itJXDnuLmm1LXQ==}
+  '@storyblok/js@3.3.0':
+    resolution: {integrity: sha512-+i0I6nvbCXnfO6L5b5SYvoqLHUb1j3iIznuN/tcGO9c8MYNopY7XGOjrOOTlJVAoiFECJyzYiwC7mDRwrotvfw==}
 
-  '@storyblok/richtext@3.0.2':
-    resolution: {integrity: sha512-KBLx9ycNVMyVnNyPiwBH5g9uWmiJpMzp9YvpnnADXlPLoksusrwI56BusSM8HaIgJgcnB5RR0LvhySkPFdC8Zg==}
+  '@storyblok/richtext@3.1.0':
+    resolution: {integrity: sha512-QtH5G+F7w3YuGGnHAFldo71vPpBT5prndZWFPDihlIsWaW0rEWyE9iX+6fp2f4XDgbhi0vyF1HqajFplGOtFVg==}
 
   '@stylistic/eslint-plugin@2.12.1':
     resolution: {integrity: sha512-fubZKIHSPuo07FgRTn6S4Nl0uXPRPYVNpyZzIDGfp7Fny6JjNus6kReLD7NI380JXi4HtUTSOZ34LBuNPO1XLQ==}
@@ -2616,8 +2616,8 @@ packages:
   std-env@3.8.0:
     resolution: {integrity: sha512-Bc3YwwCB+OzldMxOXJIIvC6cPRWr/LxOp48CdQTOkPyk/t4JWWJbrilwBd7RJzKV8QW7tJkcgAmeuLLJugl5/w==}
 
-  storyblok-js-client@6.10.8:
-    resolution: {integrity: sha512-yjXzKQO16ry+LMEUksfLjO/Eq88DwMflHVxg1YDF2Ak13fHhSD/M36XE/E1jrTbjdVuxSnlxrt8jYP6NiCnCSQ==}
+  storyblok-js-client@6.10.10:
+    resolution: {integrity: sha512-4TK6jZHTJbgbUVCne+2fg6omSmWTWBaBtmDJY0fhBw/BN5flE7wrPU41cU0olVqSbkFNF62WJnoznE1a7pzkKA==}
 
   string-argv@0.3.2:
     resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
@@ -3599,12 +3599,12 @@ snapshots:
       - typescript
       - vitest
 
-  '@storyblok/js@3.2.3':
+  '@storyblok/js@3.3.0':
     dependencies:
-      '@storyblok/richtext': 3.0.2
-      storyblok-js-client: 6.10.8
+      '@storyblok/richtext': 3.1.0
+      storyblok-js-client: 6.10.10
 
-  '@storyblok/richtext@3.0.2': {}
+  '@storyblok/richtext@3.1.0': {}
 
   '@stylistic/eslint-plugin@2.12.1(eslint@9.20.0(jiti@2.4.1))(typescript@5.7.3)':
     dependencies:
@@ -5854,7 +5854,7 @@ snapshots:
 
   std-env@3.8.0: {}
 
-  storyblok-js-client@6.10.8: {}
+  storyblok-js-client@6.10.10: {}
 
   string-argv@0.3.2: {}
 
