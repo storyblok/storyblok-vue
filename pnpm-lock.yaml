@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@storyblok/js':
-        specifier: 3.4.0
-        version: 3.4.0
+        specifier: 4.0.0
+        version: 4.0.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.7.1
@@ -709,8 +709,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  '@storyblok/js@3.4.0':
-    resolution: {integrity: sha512-naOamqsJREFPgM8bTVg3ycc78NBPSkDhnQMf/3G4w8qD1qN5yhInI3q2OEr0gPp3+NT8FyfLB78sOyHdNnwvsA==}
+  '@storyblok/js@4.0.0':
+    resolution: {integrity: sha512-D3EB9LQ9P9I9WTauwUaBkZ6J8qMVnpUAxPZRbarL7SdDKILD4CAVR9Bn+T6H5znu45J4Zq9P7OvxH+sQZPvgXw==}
 
   '@storyblok/richtext@3.2.0':
     resolution: {integrity: sha512-koVGDv1HtiI5vymE5fzRB1VO1PNguj+RSfHI4zCy2+90pRoqZbsUCR8V2TaNl7Pg8R1oOkFZnbAxdt9Z4xoxDg==}
@@ -2945,8 +2945,8 @@ packages:
   std-env@3.9.0:
     resolution: {integrity: sha512-UGvjygr6F6tpH7o2qyqR6QYpwraIjKSdtzyBdyytFOHmPZY917kwdwLG0RbOjWOnKmnm3PeHjaoLLMie7kPLQw==}
 
-  storyblok-js-client@6.10.11:
-    resolution: {integrity: sha512-4FuGbQ93X7Ok1hvTRvMy/p4bfX/3C+Uw/m7Mv+wGZyX22IGdCe01qdwgD3CP1F9l5C0lEFCsWxc2PloiM9NutA==}
+  storyblok-js-client@7.0.0:
+    resolution: {integrity: sha512-00zWW3jscL4W1kek9QCrInq1jw4xwjeM0jXuKg4sa/bCT8QuLGaGU9Wn3hat/hkvZLRFC09fV4sJRxDqwsFaKQ==}
 
   string-argv@0.3.2:
     resolution: {integrity: sha512-aqD2Q0144Z+/RqG52NeHEkZauTAUWJO8c6yTftGJKO3Tja5tUgIfmIl6kExvhtxSDP7fXB6DvzkfMpCd/F3G+Q==}
@@ -3990,10 +3990,10 @@ snapshots:
       - typescript
       - vitest
 
-  '@storyblok/js@3.4.0':
+  '@storyblok/js@4.0.0':
     dependencies:
       '@storyblok/richtext': 3.2.0
-      storyblok-js-client: 6.10.11
+      storyblok-js-client: 7.0.0
 
   '@storyblok/richtext@3.2.0': {}
 
@@ -6610,7 +6610,7 @@ snapshots:
 
   std-env@3.9.0: {}
 
-  storyblok-js-client@6.10.11: {}
+  storyblok-js-client@7.0.0: {}
 
   string-argv@0.3.2: {}
 

@@ -18,7 +18,6 @@ export type {
   ISbDimensions,
   ISbError,
   ISbManagmentApiResult,
-  ISbNode,
   ISbResponse,
   ISbResult,
   ISbSchema,
