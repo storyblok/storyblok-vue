@@ -24,6 +24,8 @@ const componentResolver: StoryblokRichTextNodeResolver<VNode> = (
 export function useStoryblokRichText(options: StoryblokRichTextOptions<VNode>) {
   const mergedOptions: StoryblokRichTextOptions<VNode> = {
     renderFn: h,
+    // TODO: Check why this changed.
+    // @ts-expect-error - createTextVNode types has been recently changed.
     textFn: createTextVNode,
     keyedResolvers: true,
     resolvers: {
